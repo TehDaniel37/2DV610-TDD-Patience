@@ -26,28 +26,28 @@ hs_err_pid*
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/dictionaries
+Patience-Java/.idea/**/workspace.xml
+Patience-Java/.idea/**/tasks.xml
+Patience-Java/.idea/dictionaries
 
 # Sensitive or high-churn files:
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.xml
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
+Patience-Java/.idea/**/dataSources/
+Patience-Java/.idea/**/dataSources.ids
+Patience-Java/.idea/**/dataSources.xml
+Patience-Java/.idea/**/dataSources.local.xml
+Patience-Java/.idea/**/sqlDataSources.xml
+Patience-Java/.idea/**/dynamic.xml
+Patience-Java/.idea/**/uiDesigner.xml
 
 # Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
+Patience-Java/.idea/**/gradle.xml
+Patience-Java/.idea/**/libraries
 
 # CMake
 cmake-build-debug/
 
 # Mongo Explorer plugin:
-.idea/**/mongoSettings.xml
+Patience-Java/.idea/**/mongoSettings.xml
 
 ## File-based project format:
 *.iws
