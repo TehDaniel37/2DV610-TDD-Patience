@@ -43,6 +43,10 @@ Patience-Java/.idea/**/uiDesigner.xml
 Patience-Java/.idea/**/gradle.xml
 Patience-Java/.idea/**/libraries
 
+Patience-Java/.gradle/
+Patience-Java/build.gradle
+Patience-Java/build/
+
 # CMake
 cmake-build-debug/
 
