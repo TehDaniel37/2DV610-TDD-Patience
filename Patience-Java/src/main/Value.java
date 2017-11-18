@@ -2,5 +2,17 @@ package main;
 
 
 public enum Value {
-    Two
+    Ace,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Jack,
+    Queen,
+    King
 }

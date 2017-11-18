@@ -21,7 +21,7 @@ public class CardTest {
 
         Card card = new Card(expectedColor, expectedValue);
 
-        assertEquals(card.color, expectedColor);
-        assertEquals(card.value, expectedValue);
+        assertEquals(card.getColor(), expectedColor);
+        assertEquals(card.getValue(), expectedValue);
     }
 }

@@ -1,5 +1,8 @@
 package main;
 
 public enum Color {
-    Hearts
+    Clubs,
+    Diamonds,
+    Hearts,
+    Spades
 }
