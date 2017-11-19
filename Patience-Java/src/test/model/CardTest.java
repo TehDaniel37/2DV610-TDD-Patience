@@ -24,4 +24,12 @@ public class CardTest {
         assertEquals(card.getColor(), expectedColor);
         assertEquals(card.getValue(), expectedValue);
     }
+
+    @Test
+    public void equalsShouldReturnTrue() {
+        Card card1 = new Card(Color.Spades, Value.Ace);
+        Card card2 = new Card(Color.Spades, Value.Ace);
+
+        assertTrue(card1.equals(card2));
+    }
 }
