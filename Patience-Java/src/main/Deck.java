@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Deck {
 
-    public ArrayList<Card> cards;
+    private ArrayList<Card> cards;
 
     public Deck() {
         cards = new ArrayList<Card>();
@@ -14,5 +14,16 @@ public class Deck {
                 cards.add(new Card(color, value));
             }
         }
+    }
+
+    public ArrayList<Card> getCards() {
+        ArrayList<Card> cardsCopy = new ArrayList<>();
+
+        for (Card card : cards) {
+            Card cardCopy = new Card(card.getColor(), card.getValue());
+            cardsCopy.add(cardCopy);
+        }
+
+        return cardsCopy;
     }
 }

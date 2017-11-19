@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import main.Deck;
@@ -20,9 +21,11 @@ public class DeckTest {
         final int expectedSize = 52;
 
         Deck deck = new Deck();
-        HashSet<Card> setOfCards = new HashSet<>(deck.cards);       // Get only unique cards from Deck
+
+        ArrayList<Card> actualCards = deck.getCards();
+        HashSet<Card> setOfCards = new HashSet<>(actualCards);       // Get only unique cards from Deck
         
-        assertEquals(deck.cards.size(), expectedSize);
+        assertEquals(actualCards.size(), expectedSize);
         assertEquals(setOfCards.size(), expectedSize);
     }
 }
