@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Objects;
 
 public class Card {
 
@@ -21,6 +22,22 @@ public class Card {
 
     @Override
     public boolean equals(Object other) {
-        return true;
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Card)) {
+            return false;
+        }
+
+        Card otherCard = (Card)other;
+
+        return Objects.equals(this.getColor(), otherCard.getColor())
+            && Objects.equals(this.getValue(), otherCard.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getColor(), this.getValue());
     }
 }
