@@ -61,17 +61,11 @@ public class StackTest {
 
     }
 
-    @Test
-    public void getTopShouldThrowEmptyCardStackException() {
-        EmptyCardStackException exception = new EmptyCardStackException();
-        String expectedMessage = exception.getMessage();
-        try {
-            sut.getTop();
-            fail();
-        }
-        catch (EmptyCardStackException ex) {
-            assertEquals(ex.getMessage(), expectedMessage);
-        }
+    @Test (expected = EmptyCardStackException.class)
+    public void getTopShouldThrowEmptyCardStackException() throws EmptyCardStackException {
+        
+        sut.getTop();
+
 
     }
 
