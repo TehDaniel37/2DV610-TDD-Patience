@@ -1,6 +1,8 @@
 package main.model;
 
 
+import main.exception.EmptyCardStackException;
+
 import java.util.ArrayList;
 
 public class Stack {
@@ -28,18 +30,5 @@ public class Stack {
             return stack.get(indexOfCard);
         }
     }
-
-    public static class EmptyCardStackException extends Exception {
-
-        public EmptyCardStackException() {
-            super("The Stack does not contain any Cards");
-        }
-
-        public EmptyCardStackException(String message)
-        {
-            super(message);
-        }
-    }
-
 
 }
