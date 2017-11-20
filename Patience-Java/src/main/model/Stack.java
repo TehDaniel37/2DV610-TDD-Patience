@@ -16,7 +16,7 @@ public class Stack {
     }
 
     public void addCard(Card card) {
-
+        stack.add(card);
     }
 
 
