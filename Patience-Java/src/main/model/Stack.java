@@ -20,7 +20,8 @@ public class Stack {
     }
 
     public Card getTop() {
-        return null;
+        int indexOfCard = stack.size()-1;
+        return stack.get(indexOfCard);
     }
 
 
