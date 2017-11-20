@@ -1,6 +1,8 @@
 package main.model;
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Collections;
 
 public class Deck {
 
@@ -25,5 +27,14 @@ public class Deck {
         }
 
         return cardsCopy;
+    }
+    
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
+    }
+    
+    public void shuffle(int seed) {
+        Random random = new Random(seed);
+        Collections.shuffle(cards, random);
     }
 }
