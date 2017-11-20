@@ -1,16 +1,12 @@
 package test.model;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import main.Card;
-import main.Color;
-import main.Value;
+import main.model.Card;
+import main.model.Color;
+import main.model.Value;
 
 public class CardTest {
 
