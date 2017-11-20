@@ -13,10 +13,10 @@ import static org.mockito.Mockito.mock;
 public class StackTest {
 
     private int expectedSize;
-    private static Stack sut;
+    private Stack sut;
 
     @Before
-    public static void beforeEach() {
+    public void beforeEach() {
         sut = new Stack();
     }
 
