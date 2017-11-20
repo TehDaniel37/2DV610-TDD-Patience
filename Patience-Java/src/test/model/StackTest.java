@@ -5,7 +5,9 @@ import main.model.Color;
 import main.model.Stack;
 import main.model.Value;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -14,6 +16,7 @@ public class StackTest {
 
     private int expectedSize;
     private Stack sut;
+    
 
     @Before
     public void beforeEach() {
@@ -47,16 +50,30 @@ public class StackTest {
         sut = new Stack();
         sut.addCard(card);
 
-        card = sut.getTop();
+        try {
+            sut.getTop();
+        }
+        catch (Stack.EmptyCardStackException ex) {
+
+        }
 
         assertEquals(card.getColor(), Color.Spades);
         assertEquals(card.getValue(), Value.Ace);
 
     }
 
-    @Test (expected = Stack.EmptyCardStackException.class)
+    @Test
     public void getTopShouldThrowEmptyCardStackException() {
-        sut.getTop();
+        Stack.EmptyCardStackException exception = new Stack.EmptyCardStackException();
+        String expectedMessage = exception.getMessage();
+        try {
+            sut.getTop();
+            fail();
+        }
+        catch (Stack.EmptyCardStackException ex) {
+            assertEquals(ex.getMessage(), expectedMessage);
+        }
+
     }
 
 

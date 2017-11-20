@@ -19,14 +19,21 @@ public class Stack {
         stack.add(card);
     }
 
-    public Card getTop() {
+    public Card getTop() throws EmptyCardStackException {
         int indexOfCard = stack.size()-1;
-        return stack.get(indexOfCard);
+        if (indexOfCard < 0) {
+            throw new EmptyCardStackException();
+        }
+        else {
+            return stack.get(indexOfCard);
+        }
     }
 
-    public class EmptyCardStackException extends Exception {
+    public static class EmptyCardStackException extends Exception {
 
-        public EmptyCardStackException() {}
+        public EmptyCardStackException() {
+            super("The Stack does not contain any Cards");
+        }
 
         public EmptyCardStackException(String message)
         {
