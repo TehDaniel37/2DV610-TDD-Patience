@@ -54,5 +54,10 @@ public class StackTest {
 
     }
 
+    @Test (expected = Stack.EmptyCardStackException.class)
+    public void getTopShouldThrowEmptyCardStackException() {
+        sut.getTop();
+    }
+
 
 }

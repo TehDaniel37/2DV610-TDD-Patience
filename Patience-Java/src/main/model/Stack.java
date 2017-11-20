@@ -24,5 +24,15 @@ public class Stack {
         return stack.get(indexOfCard);
     }
 
+    public class EmptyCardStackException extends Exception {
+
+        public EmptyCardStackException() {}
+
+        public EmptyCardStackException(String message)
+        {
+            super(message);
+        }
+    }
+
 
 }
