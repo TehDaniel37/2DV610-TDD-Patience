@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class StackTest {
 
@@ -45,25 +46,31 @@ public class StackTest {
 
     @Test
     public void getTopShouldReturnLatestCardAdded() {
-        Card card = new Card(Color.Spades, Value.Ace);
+        Color expectedColor = Color.Spades;
+        Value expectedValue = Value.Ace;
+
+        Card mockCard = mock(Card.class);
+        when(mockCard.getColor()).thenReturn(Color.Spades);
+        when(mockCard.getValue()).thenReturn(Value.Ace);
+
         sut = new Stack();
-        sut.addCard(card);
+        sut.addCard(mockCard);
 
         try {
-            sut.getTop();
+            mockCard = sut.getTop();
         }
         catch (EmptyCardStackException ex) {
             fail();
         }
 
-        assertEquals(card.getColor(), Color.Spades);
-        assertEquals(card.getValue(), Value.Ace);
+        assertEquals(mockCard.getColor(), expectedColor);
+        assertEquals(mockCard.getValue(), expectedValue);
 
     }
 
     @Test (expected = EmptyCardStackException.class)
     public void getTopShouldThrowEmptyCardStackException() throws EmptyCardStackException {
-        
+
         sut.getTop();
 
 
