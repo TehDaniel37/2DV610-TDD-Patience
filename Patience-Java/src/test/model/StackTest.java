@@ -15,11 +15,13 @@ import static org.mockito.Mockito.mock;
 
 public class StackTest {
 
+    int expectedSize;
+
 
     @Test
     public void stackConstructorShouldCreateEmptyCardArrayList() {
         Stack stack = new Stack();
-        int expectedSize = 0;
+        expectedSize = 0;
         ArrayList<Card> stackOfCards = stack.getStack();
 
         assertEquals(stackOfCards.size(), expectedSize);
@@ -27,12 +29,15 @@ public class StackTest {
 
     @Test
     public void addCardShouldIncreaseSizeOfStackByOne() {
+        expectedSize = 1;
         Card card = mock(Card.class);
-
         Stack stack = new Stack();
+
         stack.addCard(card);
-        int expectedSize = 1;
+
 
         assertEquals(stack.getStack().size(), expectedSize);
     }
+
+
 }
