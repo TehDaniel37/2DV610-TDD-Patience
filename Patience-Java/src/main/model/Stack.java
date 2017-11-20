@@ -15,5 +15,9 @@ public class Stack {
         return stack;
     }
 
+    public void addCard(Card card) {
+
+    }
+
 
 }

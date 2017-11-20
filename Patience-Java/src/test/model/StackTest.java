@@ -11,6 +11,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class StackTest {
 
@@ -22,5 +23,16 @@ public class StackTest {
         ArrayList<Card> stackOfCards = stack.getStack();
 
         assertEquals(stackOfCards.size(), expectedSize);
+    }
+
+    @Test
+    public void addCardShouldIncreaseSizeOfStackByOne() {
+        Card card = mock(Card.class);
+
+        Stack stack = new Stack();
+        stack.addCard(card);
+        int expectedSize = 1;
+
+        assertEquals(stack.getStack().size(), expectedSize);
     }
 }
