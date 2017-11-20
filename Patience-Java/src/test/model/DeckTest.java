@@ -33,10 +33,9 @@ public class DeckTest {
     @Test
     public void shuffleShouldRandomizeCardOrder() {
         final int seed = 123456789;
-        Random random = new Random(seed);
         
-        ArrayList<Card> expectedUnshuffled = new ArrayList<>();
-        ArrayList<Card> expectedShuffled = new ArrayList<>();
+        ArrayList<Card> unshuffled = new ArrayList<>();
+        ArrayList<Card> expected = new ArrayList<>();
 
         for (Color color : Color.values()) {
             for (Value value : Value.values()) {
@@ -48,18 +47,26 @@ public class DeckTest {
                 when(mockCard2.getColor()).thenReturn(color);
                 when(mockCard2.getValue()).thenReturn(value);
                 
-                expectedUnshuffled.add(mockCard1);
-                expectedShuffled.add(mockCard2);
+                unshuffled.add(mockCard1);
+                expected.add(mockCard2);
             }
         }
-        
-        Collections.shuffle(expectedShuffled, random);
+
+        Collections.shuffle(expected, new Random(seed));
         
         Deck sut = new Deck();
-        sut.setCards(expectedUnshuffled);
+        sut.setCards(unshuffled);
         sut.shuffle(seed);
-        ArrayList<Card> actualShuffled = sut.getCards();
+        ArrayList<Card> actual = sut.getCards();
         
-        assertEquals(actualShuffled, expectedShuffled);
+        assertEquals(actual.size(), expected.size());
+        
+        for (int i = 0; i < expected.size(); i++) {
+            Card actualCard = actual.get(i);
+            Card expectedCard = expected.get(i);
+            
+            assertEquals(actualCard.getColor(), expectedCard.getColor());
+            assertEquals(actualCard.getValue(), expectedCard.getValue());
+        }
     }
 }

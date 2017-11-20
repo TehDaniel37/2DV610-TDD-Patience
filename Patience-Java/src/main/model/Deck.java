@@ -19,14 +19,7 @@ public class Deck {
     }
 
     public ArrayList<Card> getCards() {
-        ArrayList<Card> cardsCopy = new ArrayList<>();
-
-        for (Card card : cards) {
-            Card cardCopy = new Card(card.getColor(), card.getValue());
-            cardsCopy.add(cardCopy);
-        }
-
-        return cardsCopy;
+        return cards;
     }
     
     public void setCards(ArrayList<Card> cards) {
