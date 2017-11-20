@@ -19,5 +19,9 @@ public class Stack {
         stack.add(card);
     }
 
+    public Card getTop() {
+        return null;
+    }
+
 
 }
