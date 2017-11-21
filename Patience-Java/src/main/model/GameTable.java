@@ -14,6 +14,10 @@ public class GameTable {
     public ArrayList<Stack> getStacks() {
         return stacks;
     }
+
+    public void addStack(Card card) {
+
+    }
 }
 
 
