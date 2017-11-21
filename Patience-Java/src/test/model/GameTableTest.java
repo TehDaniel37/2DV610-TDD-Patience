@@ -16,19 +16,22 @@ import static org.mockito.Mockito.mock;
 
 public class GameTableTest {
 
+    private int expectedSize;
+    private GameTable sut;
+
     @Test
     public void gameTableConstructorShouldCreateEmptyStackArrayList() {
-        GameTable gameTable = new GameTable();
-        int expectedSize = 0;
+        sut = new GameTable();
+        expectedSize = 0;
 
-        ArrayList<Stack> stacks = gameTable.getStacks();
+        ArrayList<Stack> stacks = sut.getStacks();
         assertEquals(stacks.size(), expectedSize);
     }
 
     @Test
     public void addStackShouldIncreaseStackArrayListByOne() {
-        GameTable sut = new GameTable();
-        int expectedSize = 1;
+        sut = new GameTable();
+        expectedSize = 1;
 
         Card card = mock(Card.class);
 
@@ -36,5 +39,6 @@ public class GameTableTest {
 
         assertEquals(expectedSize, sut.getStacks().size());
     }
+
 
 }
