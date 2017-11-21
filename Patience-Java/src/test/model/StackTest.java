@@ -15,6 +15,7 @@ import static org.mockito.Mockito.when;
 public class StackTest {
 
     private int expectedSize;
+    private Card card;
     private Stack sut;
 
 
@@ -34,7 +35,7 @@ public class StackTest {
 
     @Test
     public void stackConstructorShouldAddCardToCardArrayList() {
-        Card card = mock(Card.class);
+        card = mock(Card.class);
         sut = new Stack(card);
 
         expectedSize = 1;
@@ -45,7 +46,7 @@ public class StackTest {
     @Test
     public void addCardShouldIncreaseSizeOfStackByOne() {
         expectedSize = 1;
-        Card card = mock(Card.class);
+        card = mock(Card.class);
         sut = new Stack();
 
         sut.addCard(card);
@@ -59,22 +60,22 @@ public class StackTest {
         Color expectedColor = Color.Spades;
         Value expectedValue = Value.Ace;
 
-        Card mockCard = mock(Card.class);
-        when(mockCard.getColor()).thenReturn(Color.Spades);
-        when(mockCard.getValue()).thenReturn(Value.Ace);
+        card = mock(Card.class);
+        when(card.getColor()).thenReturn(Color.Spades);
+        when(card.getValue()).thenReturn(Value.Ace);
 
         sut = new Stack();
-        sut.addCard(mockCard);
+        sut.addCard(card);
 
         try {
-            mockCard = sut.getTop();
+            card = sut.getTop();
         }
         catch (EmptyCardStackException ex) {
             fail();
         }
 
-        assertEquals(mockCard.getColor(), expectedColor);
-        assertEquals(mockCard.getValue(), expectedValue);
+        assertEquals(card.getColor(), expectedColor);
+        assertEquals(card.getValue(), expectedValue);
 
     }
 
