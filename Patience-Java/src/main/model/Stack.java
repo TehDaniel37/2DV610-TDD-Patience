@@ -14,7 +14,8 @@ public class Stack {
     }
 
     public Stack(Card card) {
-        
+        stack = new ArrayList<Card>();
+        stack.add(card);
     }
 
     public ArrayList<Card> getStack() {
