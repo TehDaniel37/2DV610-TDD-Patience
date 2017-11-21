@@ -26,10 +26,20 @@ public class StackTest {
 
     @Test
     public void stackConstructorShouldCreateEmptyCardArrayList() {
-        Stack sut = new Stack();
+        sut = new Stack();
         expectedSize = 0;
 
         assertEquals(sut.getStack().size(), expectedSize);
+    }
+
+    @Test
+    public void stackConstructorShouldAddCardToCardArrayList() {
+        Card card = mock(Card.class);
+        sut = new Stack(card);
+
+        expectedSize = 1;
+
+        assertEquals(expectedSize, sut.getStack().size());
     }
 
     @Test

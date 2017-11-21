@@ -13,6 +13,10 @@ public class Stack {
         stack = new ArrayList<Card>();
     }
 
+    public Stack(Card card) {
+        
+    }
+
     public ArrayList<Card> getStack() {
         return stack;
     }
