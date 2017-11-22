@@ -30,4 +30,9 @@ public class GameTest {
     public void constructorShouldCreateDeck() {
         assertNotNull(sut.getDeck());
     }
+    
+    @Test
+    public void constructorShouldCreateGameTable() {
+        assertNotNull(sut.gameTable);
+    }
 }

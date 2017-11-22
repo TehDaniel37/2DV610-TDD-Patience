@@ -3,6 +3,8 @@ package main.model;
 import java.util.ArrayList;
 
 public class Game {
+    public GameTable gameTable;
+    
     private ArrayList<Stack> stacks;
     private Deck deck;
     
