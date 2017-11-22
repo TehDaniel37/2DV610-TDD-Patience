@@ -11,6 +11,7 @@ public class Game {
     public Game() {
         stacks = new ArrayList<>();
         deck = new Deck();
+        gameTable = new GameTable();
     }
     
     public ArrayList<Stack> getStacks() {
