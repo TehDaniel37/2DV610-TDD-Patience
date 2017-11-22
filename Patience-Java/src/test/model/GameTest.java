@@ -20,4 +20,11 @@ public class GameTest {
         assertNotNull(sut.getStacks());
         assertEquals(sut.getStacks().size(), 0);
     }
+    
+    @Test
+    public void constructorShouldCreateDeck() {
+        Game sut = new Game();
+        
+        assertNotNull(sut.deck);
+    }
 }

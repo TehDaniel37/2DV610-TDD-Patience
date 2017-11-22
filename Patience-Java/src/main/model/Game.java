@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Stack> stacks;
+    public Deck deck;
     
     public Game() {
         stacks = new ArrayList<>();
