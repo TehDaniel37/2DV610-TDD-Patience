@@ -17,7 +17,7 @@ public class GameTest {
     public void constructorShouldCreateEmptyStackList() {
         Game sut = new Game();
         
-        assertNotNull(sut.stacks);
-        assertEquals(sut.stacks.size(), 0);
+        assertNotNull(sut.getStacks());
+        assertEquals(sut.getStacks().size(), 0);
     }
 }
