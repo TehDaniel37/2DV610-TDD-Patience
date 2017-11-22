@@ -19,6 +19,11 @@ public class GameTableTest {
     private int expectedSize;
     private GameTable sut;
 
+    @Before
+    public void beforeEach() {
+        sut = new GameTable();
+    }
+
     @Test
     public void gameTableConstructorShouldCreateEmptyStackArrayList() {
         sut = new GameTable();
@@ -30,7 +35,6 @@ public class GameTableTest {
 
     @Test
     public void addStackShouldIncreaseStackArrayListByOne() {
-        sut = new GameTable();
         expectedSize = 1;
 
         Card card = mock(Card.class);
@@ -42,7 +46,6 @@ public class GameTableTest {
 
     @Test
     public void mergeStacksShouldCombineTwoStacks() {
-        sut = new GameTable();
 
         Stack stackBottom = new Stack();
         Stack stackTop = new Stack();
