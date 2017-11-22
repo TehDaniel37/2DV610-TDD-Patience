@@ -20,6 +20,10 @@ public class GameTable {
         Stack stack = new Stack(card);
         stacks.add(stack);
     }
+
+    public void mergeStacks(Stack bottom, Stack top) {
+
+    }
 }
 
 

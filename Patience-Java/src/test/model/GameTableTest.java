@@ -40,5 +40,26 @@ public class GameTableTest {
         assertEquals(expectedSize, sut.getStacks().size());
     }
 
+    @Test
+    public void mergeStacksShouldCombineTwoStacks() {
+        sut = new GameTable();
+
+        Stack stackBottom = new Stack();
+        Stack stackTop = new Stack();
+
+        Card card = mock(Card.class);
+
+        stackBottom.addCard(card);
+        stackBottom.addCard(card);
+        stackTop.addCard(card);
+        stackTop.addCard(card);
+
+        expectedSize = 4;
+
+        sut.mergeStacks(stackBottom, stackTop);
+
+        assertEquals(expectedSize, stackBottom.getStack().size());
+    }
+
 
 }
