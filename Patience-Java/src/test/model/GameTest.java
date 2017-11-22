@@ -13,18 +13,21 @@ import main.model.Stack;
 
 public class GameTest {
     
+    private Game sut;
+    
+    @Before
+    public void setup() {
+        sut = new Game();
+    }
+    
     @Test
     public void constructorShouldCreateEmptyStackList() {
-        Game sut = new Game();
-        
         assertNotNull(sut.getStacks());
         assertEquals(sut.getStacks().size(), 0);
     }
     
     @Test
     public void constructorShouldCreateDeck() {
-        Game sut = new Game();
-        
-        assertNotNull(sut.deck);
+        assertNotNull(sut.getDeck());
     }
 }

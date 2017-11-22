@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Stack> stacks;
-    public Deck deck;
+    private Deck deck;
     
     public Game() {
         stacks = new ArrayList<>();
@@ -13,5 +13,9 @@ public class Game {
     
     public ArrayList<Stack> getStacks() {
         return stacks;
+    }
+    
+    public Deck getDeck() {
+        return deck;
     }
 }
