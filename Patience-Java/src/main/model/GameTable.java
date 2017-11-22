@@ -25,7 +25,9 @@ public class GameTable {
 
         for (Card c : top.getStack()) {
             bottom.addCard(c);
+
         }
+        top.getStack().clear();
     }
 }
 
