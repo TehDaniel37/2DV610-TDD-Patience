@@ -3,22 +3,23 @@ package main.model;
 import java.util.ArrayList;
 
 public class Game {
-    public GameTable gameTable;
-    
-    private ArrayList<Stack> stacks;
+    private GameTable gameTable;
     private Deck deck;
     
     public Game() {
-        stacks = new ArrayList<>();
         deck = new Deck();
         gameTable = new GameTable();
     }
     
     public ArrayList<Stack> getStacks() {
-        return stacks;
+        return gameTable.getStacks();
     }
     
     public Deck getDeck() {
         return deck;
+    }
+    
+    public GameTable getGameTable() {
+        return gameTable;
     }
 }

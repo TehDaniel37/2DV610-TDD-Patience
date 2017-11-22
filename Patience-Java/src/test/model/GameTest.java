@@ -33,6 +33,6 @@ public class GameTest {
     
     @Test
     public void constructorShouldCreateGameTable() {
-        assertNotNull(sut.gameTable);
+        assertNotNull(sut.getGameTable());
     }
 }
