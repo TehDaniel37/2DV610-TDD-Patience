@@ -8,6 +8,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class GameTest {
+import main.model.Game;
+import main.model.Stack;
 
+public class GameTest {
+    
+    @Test
+    public void constructorShouldCreateEmptyStackList() {
+        Game sut = new Game();
+        
+        assertNotNull(sut.stacks);
+        assertEquals(sut.stacks.size(), 0);
+    }
 }
