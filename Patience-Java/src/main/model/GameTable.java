@@ -23,6 +23,9 @@ public class GameTable {
 
     public void mergeStacks(Stack bottom, Stack top) {
 
+        for (Card c : top.getStack()) {
+            bottom.addCard(c);
+        }
     }
 }
 
