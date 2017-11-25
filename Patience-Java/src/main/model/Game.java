@@ -22,4 +22,8 @@ public class Game {
     public GameTable getGameTable() {
         return gameTable;
     }
+
+    public boolean stacksMergeable(Stack stack1, Stack stack2) {
+        return true;
+    }
 }

@@ -2,6 +2,7 @@ package main.model;
 
 
 import main.exception.EmptyCardStackException;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -36,4 +37,7 @@ public class Stack {
         }
     }
 
+    public int getPosition() {
+        throw new NotImplementedException();
+    }
 }

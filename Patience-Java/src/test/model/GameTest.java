@@ -59,6 +59,6 @@ public class GameTest {
         when(mockStackTop.getPosition()).thenReturn(bottomStackPos);
         when(mockStackBottom.getPosition()).thenReturn(topStackPos);
 
-        assertTrue(sut.stacksMergable(mockStackBottom, mockStackTop));
+        assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
 }
