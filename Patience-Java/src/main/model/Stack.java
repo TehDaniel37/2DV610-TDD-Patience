@@ -40,4 +40,12 @@ public class Stack {
     public int getPosition() {
         throw new NotImplementedException();
     }
+
+    public void mergeStack(Stack stack) {
+        for (Card card : stack.getStack()) {
+            this.addCard(card);
+        }
+
+        stack.getStack().clear();
+    }
 }
