@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import sun.invoke.empty.Empty;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -22,22 +21,6 @@ public class GameTest {
         sut = new Game();
     }
     
-    @Test
-    public void constructorShouldCreateEmptyStackList() {
-        assertNotNull(sut.getStacks());
-        assertEquals(sut.getStacks().size(), 0);
-    }
-    
-    @Test
-    public void constructorShouldCreateDeck() {
-        assertNotNull(sut.getDeck());
-    }
-    
-    @Test
-    public void constructorShouldCreateGameTable() {
-        assertNotNull(sut.getGameTable());
-    }
-
     @Test
     public void stacksMergeableShouldReturnTrueWhenCardsHaveSameColor() throws EmptyCardStackException {
         final int bottomStackPos = 0;
