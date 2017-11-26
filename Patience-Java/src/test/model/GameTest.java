@@ -27,8 +27,14 @@ public class GameTest {
         }
         
         if (top != null) {
-            when(stack.getTop()).thenReturn(top);
+            try {
+                when(stack.getTop()).thenReturn(top);
+            } catch (EmptyCardStackException ex) {
+                
+            }
         }
+        
+        return stack;
     }
     
     @Before
@@ -39,7 +45,7 @@ public class GameTest {
     }
     
     @Test
-    public void stacksMergeableShouldReturnTrueWhenCardsHaveSameColor() throws EmptyCardStackException {
+    public void stacksMergeableShouldReturnTrueWhenCardsHaveSameColor() {
         final int bottomStackPos = 0;
         final int topStackPos = 1; 
 
