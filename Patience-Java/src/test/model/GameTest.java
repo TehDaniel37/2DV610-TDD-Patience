@@ -19,6 +19,18 @@ public class GameTest {
     private GameTable table;
     private Game sut;
     
+    private Stack mockStack(Card top, Integer pos) {
+        Stack stack = mock(Stack.class);
+        
+        if (pos != null) {
+            when(stack.getPosition()).thenReturn(pos);
+        }
+        
+        if (top != null) {
+            when(stack.getTop()).thenReturn(top);
+        }
+    }
+    
     @Before
     public void setup() {
         deck = mock(Deck.class);
@@ -39,13 +51,8 @@ public class GameTest {
         when(mockCardBottom.getValue()).thenReturn(Value.Two);
         when(mockCardTop.getValue()).thenReturn(Value.Three);
 
-        Stack mockStackBottom = mock(Stack.class);
-        Stack mockStackTop = mock(Stack.class);
-
-        when(mockStackBottom.getTop()).thenReturn(mockCardBottom);
-        when(mockStackTop.getTop()).thenReturn(mockCardTop);
-        when(mockStackTop.getPosition()).thenReturn(topStackPos);
-        when(mockStackBottom.getPosition()).thenReturn(bottomStackPos);
+        Stack mockStackBottom = mockStack(mockCardBottom, bottomStackPos);
+        Stack mockStackTop = mockStack(mockCardTop, topStackPos);
 
         assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
@@ -55,11 +62,8 @@ public class GameTest {
         final int bottomStackPos = 1;
         final int topStackPos = 0;
         
-        Stack mockStackBottom = mock(Stack.class);
-        Stack mockStackTop = mock(Stack.class);
-        
-        when(mockStackBottom.getPosition()).thenReturn(bottomStackPos);
-        when(mockStackTop.getPosition()).thenReturn(topStackPos);
+        Stack mockStackBottom = mockStack(null, bottomStackPos);
+        Stack mockStackTop = mockStack(null, topStackPos);
         
         assertFalse(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }

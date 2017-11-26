@@ -13,8 +13,8 @@ public class Game {
         this.gameTable = table;
     }
 
-    public boolean stacksMergeable(Stack stack1, Stack stack2) {
-        int positionDifference = stack2.getPosition() - stack1.getPosition();
+    public boolean stacksMergeable(Stack mergeInto, Stack mergeFrom) {
+        int positionDifference = mergeFrom.getPosition() - mergeInto.getPosition();
 
         if (!(positionDifference == 1 || positionDifference == 3)) {
             return false;
@@ -24,8 +24,8 @@ public class Game {
         Card card2;
 
         try {
-            card1 = stack1.getTop();
-            card2 = stack2.getTop();
+            card1 = mergeInto.getTop();
+            card2 = mergeFrom.getTop();
         } catch (EmptyCardStackException ex) {
             return false;
         }
