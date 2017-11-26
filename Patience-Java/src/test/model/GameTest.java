@@ -2,6 +2,7 @@ package test.model;
 
 import main.exception.EmptyCardStackException;
 import main.model.*;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.After;
@@ -14,17 +15,21 @@ import static org.mockito.Mockito.when;
 
 public class GameTest {
     
+    private Deck deck;
+    private GameTable table;
     private Game sut;
     
     @Before
     public void setup() {
-        sut = new Game();
+        deck = mock(Deck.class);
+        table = mock(GameTable.class);
+        sut = new Game(deck, table);
     }
     
     @Test
     public void stacksMergeableShouldReturnTrueWhenCardsHaveSameColor() throws EmptyCardStackException {
         final int bottomStackPos = 0;
-        final int topStackPos = 1;
+        final int topStackPos = 1; 
 
         Card mockCardBottom = mock(Card.class);
         Card mockCardTop = mock(Card.class);
