@@ -49,4 +49,18 @@ public class GameTest {
 
         assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
+    
+    @Test
+    public void stacksMergeableShouldReturnFalseWhenBottomStackHasBiggerPos() {
+        final int bottomStackPos = 1;
+        final int topStackPos = 0;
+        
+        Stack mockStackBottom = mock(Stack.class);
+        Stack mockStackTop = mock(Stack.class);
+        
+        when(mockStackBottom.getPosition()).thenReturn(bottomStackPos);
+        when(mockStackTop.getPosition()).thenReturn(topStackPos);
+        
+        assertFalse(sut.stacksMergeable(mockStackBottom, mockStackTop));
+    }
 }
