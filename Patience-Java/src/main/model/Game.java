@@ -14,7 +14,7 @@ public class Game {
     }
 
     public boolean stacksMergeable(Stack stack1, Stack stack2) {
-        int positionDifference = Math.abs(stack2.getPosition() - stack1.getPosition());
+        int positionDifference = stack2.getPosition() - stack1.getPosition();
 
         if (!(positionDifference == 1 || positionDifference == 3)) {
             return false;

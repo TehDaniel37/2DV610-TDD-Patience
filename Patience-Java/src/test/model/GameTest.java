@@ -44,8 +44,8 @@ public class GameTest {
 
         when(mockStackBottom.getTop()).thenReturn(mockCardBottom);
         when(mockStackTop.getTop()).thenReturn(mockCardTop);
-        when(mockStackTop.getPosition()).thenReturn(bottomStackPos);
-        when(mockStackBottom.getPosition()).thenReturn(topStackPos);
+        when(mockStackTop.getPosition()).thenReturn(topStackPos);
+        when(mockStackBottom.getPosition()).thenReturn(bottomStackPos);
 
         assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
