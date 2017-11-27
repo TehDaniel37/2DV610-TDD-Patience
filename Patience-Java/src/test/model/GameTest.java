@@ -35,6 +35,15 @@ public class GameTest {
         return stack;
     }
     
+    private Card mockCard(Color color, Value value) {
+        Card card = mock(Card.class);
+        
+        when(card.getColor()).thenReturn(color);
+        when(card.getValue()).thenReturn(value);
+        
+        return card;
+    }
+    
     @Before
     public void setup() {
         deck = mock(Deck.class);
@@ -44,49 +53,28 @@ public class GameTest {
     
     @Test
     public void stacksMergeableShouldReturnTrueWhenCardsHaveSameColor() {
-        final int bottomStackPos = 0;
-        final int topStackPos = 1; 
-
-        Card mockCardBottom = mock(Card.class);
-        Card mockCardTop = mock(Card.class);
-
-        when(mockCardBottom.getColor()).thenReturn(Color.Hearts);
-        when(mockCardTop.getColor()).thenReturn(Color.Hearts);
-        when(mockCardBottom.getValue()).thenReturn(Value.Two);
-        when(mockCardTop.getValue()).thenReturn(Value.Three);
-
-        Stack mockStackBottom = mockStack(mockCardBottom, bottomStackPos);
-        Stack mockStackTop = mockStack(mockCardTop, topStackPos);
+        Card mockCardBottom = mockCard(Color.Hearts, Value.Two);
+        Card mockCardTop = mockCard(Color.Hearts, Value.Three);
+        Stack mockStackBottom = mockStack(mockCardBottom, 0);
+        Stack mockStackTop = mockStack(mockCardTop, 1);
 
         assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
     
     @Test
     public void stacksMergeableShouldReturnTrueWhenCardsHaveSameValue() {
-        final int bottomStackPos = 0;
-        final int topStackPos = 1; 
-
-        Card mockCardBottom = mock(Card.class);
-        Card mockCardTop = mock(Card.class);
-
-        when(mockCardBottom.getColor()).thenReturn(Color.Spades);
-        when(mockCardTop.getColor()).thenReturn(Color.Diamonds);
-        when(mockCardBottom.getValue()).thenReturn(Value.King);
-        when(mockCardTop.getValue()).thenReturn(Value.King);
-
-        Stack mockStackBottom = mockStack(mockCardBottom, bottomStackPos);
-        Stack mockStackTop = mockStack(mockCardTop, topStackPos);
+        Card mockCardBottom = mockCard(Color.Spades, Value.King);
+        Card mockCardTop = mockCard(Color.Diamonds, Value.King);
+        Stack mockStackBottom = mockStack(mockCardBottom, 0);
+        Stack mockStackTop = mockStack(mockCardTop, 1);
 
         assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
     
     @Test
     public void stacksMergeableShouldReturnFalseWhenBottomStackHasBiggerPos() {
-        final int bottomStackPos = 1;
-        final int topStackPos = 0;
-        
-        Stack mockStackBottom = mockStack(null, bottomStackPos);
-        Stack mockStackTop = mockStack(null, topStackPos);
+        Stack mockStackBottom = mockStack(null, 1);
+        Stack mockStackTop = mockStack(null, 0);
         
         assertFalse(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
