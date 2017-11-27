@@ -21,13 +21,13 @@ public class StackTest {
 
     @Before
     public void beforeEach() {
-        sut = new Stack();
+        sut = new Stack(0);
     }
 
 
     @Test
     public void stackConstructorShouldCreateEmptyCardArrayList() {
-        sut = new Stack();
+        sut = new Stack(0 );
         expectedSize = 0;
 
         assertEquals(sut.getStack().size(), expectedSize);
@@ -36,7 +36,7 @@ public class StackTest {
     @Test
     public void stackConstructorShouldAddCardToCardArrayList() {
         card = mock(Card.class);
-        sut = new Stack(card);
+        sut = new Stack(0, card);
 
         expectedSize = 1;
 
@@ -44,10 +44,25 @@ public class StackTest {
     }
 
     @Test
+    public void stackConstructorShouldSetPosition() {
+        card = mock(Card.class);
+        sut = new Stack(2, card);
+
+        int expectedPosition = 2;
+
+        assertEquals(expectedPosition, sut.getPosition());
+
+        sut = new Stack(2);
+
+        assertEquals(expectedPosition, sut.getPosition());
+
+    }
+
+    @Test
     public void addCardShouldIncreaseSizeOfStackByOne() {
         expectedSize = 1;
         card = mock(Card.class);
-        sut = new Stack();
+        sut = new Stack(0);
 
         sut.addCard(card);
 
@@ -64,7 +79,7 @@ public class StackTest {
         when(card.getColor()).thenReturn(Color.Spades);
         when(card.getValue()).thenReturn(Value.Ace);
 
-        sut = new Stack();
+        sut = new Stack(0);
         sut.addCard(card);
 
         try {
@@ -90,7 +105,7 @@ public class StackTest {
     @Test
     public void mergeStacksShouldCombineTwoStacks() {
 
-        Stack stackTop = new Stack();
+        Stack stackTop = new Stack(0);
 
         Card card = mock(Card.class);
 
@@ -131,7 +146,7 @@ public class StackTest {
     }
 
     private Stack initializeCardsForStacks() {
-        Stack topStack = new Stack();
+        Stack topStack = new Stack(0);
 
         Card card = mock(Card.class);
         when(card.getColor()).thenReturn(Color.Hearts);

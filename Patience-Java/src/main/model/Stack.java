@@ -9,12 +9,13 @@ import java.util.ArrayList;
 public class Stack {
 
     private ArrayList<Card> stack;
+    private int stackPosition;
 
-    public Stack() {
+    public Stack(int position) {
         stack = new ArrayList<Card>();
     }
 
-    public Stack(Card card) {
+    public Stack(int position, Card card) {
         stack = new ArrayList<Card>();
         stack.add(card);
     }
@@ -38,14 +39,13 @@ public class Stack {
     }
 
     public int getPosition() {
-        throw new NotImplementedException();
+        return stackPosition;
     }
 
     public void mergeStack(Stack stack) {
         for (Card card : stack.getStack()) {
             this.addCard(card);
         }
-
         stack.getStack().clear();
     }
 }

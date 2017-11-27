@@ -17,7 +17,7 @@ public class GameTable {
 
     public void addStack(Card card) {
 
-        Stack stack = new Stack(card);
+        Stack stack = new Stack(0, card);
         stacks.add(stack);
     }
 
