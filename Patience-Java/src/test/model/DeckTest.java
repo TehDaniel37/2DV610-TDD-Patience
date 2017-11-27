@@ -1,5 +1,6 @@
 package test.model;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -17,13 +18,20 @@ import main.model.Card;
 
 public class DeckTest {
 
+    Deck sut;
+
+    @Before
+    public void beforeEach() {
+        sut = new Deck();
+    }
+
     @Test
     public void constructorShouldCreate52UniqueCards() {
         final int expectedSize = 52;
 
-        Deck deck = new Deck();
+        Deck sut = new Deck();
 
-        ArrayList<Card> actualCards = deck.getCards();
+        ArrayList<Card> actualCards = sut.getCards();
         HashSet<Card> setOfCards = new HashSet<>(actualCards);       // Get only unique cards from Deck
         
         assertEquals(actualCards.size(), expectedSize);
@@ -54,7 +62,7 @@ public class DeckTest {
 
         Collections.shuffle(expected, new Random(seed));
         
-        Deck sut = new Deck();
+
         sut.setCards(unshuffled);
         sut.shuffle(seed);
         ArrayList<Card> actual = sut.getCards();
@@ -72,7 +80,6 @@ public class DeckTest {
 
     @Test
     public void dealShouldReturnACardAndRemoveItFromDeck() {
-        Deck sut = new Deck();
         Card card = sut.deal();
 
         int expectedSize = 51;
@@ -80,4 +87,6 @@ public class DeckTest {
         assertNotNull(card);
         assertEquals(expectedSize, sut.getCards().size());
     }
+
+   
 }
