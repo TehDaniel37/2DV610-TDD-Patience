@@ -29,9 +29,7 @@ public class GameTest {
         if (top != null) {
             try {
                 when(stack.getTop()).thenReturn(top);
-            } catch (EmptyCardStackException ex) {
-                
-            }
+            } catch (EmptyCardStackException ex) { }
         }
         
         return stack;
@@ -56,6 +54,25 @@ public class GameTest {
         when(mockCardTop.getColor()).thenReturn(Color.Hearts);
         when(mockCardBottom.getValue()).thenReturn(Value.Two);
         when(mockCardTop.getValue()).thenReturn(Value.Three);
+
+        Stack mockStackBottom = mockStack(mockCardBottom, bottomStackPos);
+        Stack mockStackTop = mockStack(mockCardTop, topStackPos);
+
+        assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
+    }
+    
+    @Test
+    public void stacksMergeableShouldReturnTrueWhenCardsHaveSameValue() {
+        final int bottomStackPos = 0;
+        final int topStackPos = 1; 
+
+        Card mockCardBottom = mock(Card.class);
+        Card mockCardTop = mock(Card.class);
+
+        when(mockCardBottom.getColor()).thenReturn(Color.Spades);
+        when(mockCardTop.getColor()).thenReturn(Color.Diamonds);
+        when(mockCardBottom.getValue()).thenReturn(Value.King);
+        when(mockCardTop.getValue()).thenReturn(Value.King);
 
         Stack mockStackBottom = mockStack(mockCardBottom, bottomStackPos);
         Stack mockStackTop = mockStack(mockCardTop, topStackPos);
