@@ -30,4 +30,8 @@ public class Deck {
         Random random = new Random(seed);
         Collections.shuffle(cards, random);
     }
+
+    public Card deal() {
+        return null;
+    }
 }

@@ -69,4 +69,15 @@ public class DeckTest {
             assertEquals(actualCard.getValue(), expectedCard.getValue());
         }
     }
+
+    @Test
+    public void dealShouldReturnACardAndRemoveItFromDeck() {
+        Deck sut = new Deck();
+        Card card = sut.deal();
+
+        int expectedSize = 51;
+
+        assertNotNull(card);
+        assertEquals(expectedSize, sut.getCards().size());
+    }
 }
