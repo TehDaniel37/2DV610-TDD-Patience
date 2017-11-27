@@ -1,5 +1,6 @@
 package test.model;
 
+import main.exception.EmptyDeckException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -79,7 +80,7 @@ public class DeckTest {
     }
 
     @Test
-    public void dealShouldReturnACardAndRemoveItFromDeck() {
+    public void dealShouldReturnACardAndRemoveItFromDeck() throws EmptyDeckException {
         Card card = sut.deal();
 
         int expectedSize = 51;
@@ -88,8 +89,8 @@ public class DeckTest {
         assertEquals(expectedSize, sut.getCards().size());
     }
 
-    @Test
-    public void dealShouldThrowEmptyDeckExceptionIfEmptyDeck() {
+    @Test (expected = EmptyDeckException.class)
+    public void dealShouldThrowEmptyDeckExceptionIfEmptyDeck() throws EmptyDeckException {
         sut.getCards().clear();
 
         sut.deal();

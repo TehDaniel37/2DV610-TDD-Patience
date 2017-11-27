@@ -1,5 +1,7 @@
 package main.model;
 
+import main.exception.EmptyDeckException;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
@@ -31,9 +33,15 @@ public class Deck {
         Collections.shuffle(cards, random);
     }
 
-    public Card deal() {
-        Card card = cards.get(0);
-        cards.remove(card);
-        return card;
+    public Card deal() throws EmptyDeckException{
+        if (cards.size() == 0) {
+            throw new EmptyDeckException();
+        }
+        else {
+            Card card = cards.get(0);
+            cards.remove(card);
+            return card;
+        }
+
     }
 }
