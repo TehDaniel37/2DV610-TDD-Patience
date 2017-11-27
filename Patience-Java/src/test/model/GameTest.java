@@ -78,4 +78,12 @@ public class GameTest {
         
         assertFalse(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
+    
+    @Test
+    public void stacksMergeableShouldReturnTrueWhenBottomStackIsThreePositionsFromTopStack() {
+        Stack mockStackBottom = mockStack(mockCard(Color.Spades, Value.Ace), 0);
+        Stack mockStackTop = mockStack(mockCard(Color.Spades, Value.King), 3);
+        
+        assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
+    }
 }
