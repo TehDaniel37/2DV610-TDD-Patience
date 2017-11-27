@@ -19,31 +19,6 @@ public class GameTest {
     private GameTable table;
     private Game sut;
     
-    private Stack mockStack(Card top, Integer pos) {
-        Stack stack = mock(Stack.class);
-        
-        if (pos != null) {
-            when(stack.getPosition()).thenReturn(pos);
-        }
-        
-        if (top != null) {
-            try {
-                when(stack.getTop()).thenReturn(top);
-            } catch (EmptyCardStackException ex) { }
-        }
-        
-        return stack;
-    }
-    
-    private Card mockCard(Color color, Value value) {
-        Card card = mock(Card.class);
-        
-        when(card.getColor()).thenReturn(color);
-        when(card.getValue()).thenReturn(value);
-        
-        return card;
-    }
-    
     @Before
     public void setup() {
         deck = mock(Deck.class);
@@ -85,5 +60,30 @@ public class GameTest {
         Stack mockStackTop = mockStack(mockCard(Color.Spades, Value.King), 3);
         
         assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
+    }
+    
+    private Stack mockStack(Card top, Integer pos) {
+        Stack stack = mock(Stack.class);
+        
+        if (pos != null) {
+            when(stack.getPosition()).thenReturn(pos);
+        }
+        
+        if (top != null) {
+            try {
+                when(stack.getTop()).thenReturn(top);
+            } catch (EmptyCardStackException ex) { }
+        }
+        
+        return stack;
+    }
+    
+    private Card mockCard(Color color, Value value) {
+        Card card = mock(Card.class);
+        
+        when(card.getColor()).thenReturn(color);
+        when(card.getValue()).thenReturn(value);
+        
+        return card;
     }
 }
