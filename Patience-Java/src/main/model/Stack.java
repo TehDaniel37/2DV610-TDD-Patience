@@ -13,10 +13,12 @@ public class Stack {
 
     public Stack(int position) {
         stack = new ArrayList<Card>();
+        stackPosition = position;
     }
 
     public Stack(int position, Card card) {
         stack = new ArrayList<Card>();
+        stackPosition = position;
         stack.add(card);
     }
 
