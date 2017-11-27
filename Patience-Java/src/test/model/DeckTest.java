@@ -88,5 +88,10 @@ public class DeckTest {
         assertEquals(expectedSize, sut.getCards().size());
     }
 
-   
+    @Test
+    public void dealShouldThrowEmptyDeckExceptionIfEmptyDeck() {
+        sut.getCards().clear();
+
+        sut.deal();
+    }
 }
