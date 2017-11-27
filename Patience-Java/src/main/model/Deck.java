@@ -32,6 +32,8 @@ public class Deck {
     }
 
     public Card deal() {
-        return null;
+        Card card = cards.get(0);
+        cards.remove(card);
+        return card;
     }
 }
