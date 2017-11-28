@@ -16,6 +16,7 @@ public class GameTable {
     }
 
     public void setObserver(GameObserver observer) {
+        gameObserver = observer;
     }
 
     public GameObserver getObserver() {
