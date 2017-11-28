@@ -59,6 +59,7 @@ public class GameTableTest {
     @Test
     public void addStackShouldCallObserverOnStackAdded() {
         GameTableView gameTableView = mock(GameTableView.class);
+        sut.setObserver(gameTableView);
         Card card = mock(Card.class);
         sut.addStack(card);
 

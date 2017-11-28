@@ -28,8 +28,9 @@ public class GameTable {
 
     public void addStack(Card card) {
 
-        Stack stack = new Stack(0, card);
+        Stack stack = new Stack(stacks.size(), card);
         stacks.add(stack);
+        gameObserver.onStackAdded(stack);
     }
 
 
