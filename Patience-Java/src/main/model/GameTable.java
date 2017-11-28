@@ -1,14 +1,25 @@
 package main.model;
 
 
+import main.view.GameObserver;
+
 import java.util.ArrayList;
 
 public class GameTable {
+
+    private GameObserver gameObserver;
 
     private ArrayList<Stack> stacks;
 
     public GameTable() {
         stacks = new ArrayList<Stack>();
+    }
+
+    public void setObserver(GameObserver observer) {
+    }
+
+    public GameObserver getObserver() {
+        return gameObserver;
     }
 
     public ArrayList<Stack> getStacks() {

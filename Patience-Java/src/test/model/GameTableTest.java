@@ -3,6 +3,7 @@ package test.model;
 import main.model.Card;
 import main.model.GameTable;
 import main.model.Stack;
+import main.view.GameObserver;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.After;
@@ -43,6 +44,14 @@ public class GameTableTest {
         sut.addStack(card);
 
         assertEquals(expectedSize, sut.getStacks().size());
+    }
+
+    @Test
+    public void setObserverShouldAddObserver() {
+        GameObserver gameObserver = mock(GameObserver.class);
+        sut.setObserver(gameObserver);
+
+        assertNotNull(sut.getObserver());
     }
 
 
