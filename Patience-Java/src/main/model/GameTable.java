@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class GameTable {
 
     private GameObserver gameObserver;
-
     private ArrayList<Stack> stacks;
 
     public GameTable() {
