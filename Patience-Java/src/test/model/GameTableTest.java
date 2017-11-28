@@ -73,6 +73,15 @@ public class GameTableTest {
 
     }
 
+    @Test
+    public void mergeStacksShouldCallMergeMethodInStack() {
+        sut.addStack(mockCard);
+        sut.addStack(mockCard);
+
+        sut.mergeStacks(0,1);
+        verify(sut.getStacks().get(0)).mergeStack(sut.getStacks().get(1));
+    }
+
 
 
 
