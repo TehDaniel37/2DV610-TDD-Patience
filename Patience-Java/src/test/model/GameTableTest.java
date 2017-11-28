@@ -63,6 +63,16 @@ public class GameTableTest {
         verify(mockGameTableView).onStackAdded(sut.getStacks().get(0));
     }
 
+    @Test
+    public void mergeStacksShouldCallOnStacksMerged() {
+        sut.addStack(mockCard);
+        sut.addStack(mockCard);
+
+        sut.mergeStacks(0, 1);
+        verify(mockGameTableView).onStacksMerged(0,1);
+
+    }
+
 
 
 

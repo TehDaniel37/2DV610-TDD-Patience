@@ -33,6 +33,10 @@ public class GameTable {
         gameObserver.onStackAdded(stack);
     }
 
+    public void mergeStacks(int positionBottomStack, int positionTopStack) {
+
+    }
+
 
 }
 
