@@ -5,12 +5,8 @@ import main.model.GameTable;
 import main.model.Stack;
 import main.view.GameObserver;
 import main.view.GameTableView;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
@@ -22,10 +18,15 @@ public class GameTableTest {
 
     private int expectedSize;
     private GameTable sut;
+    private GameTableView mockGameTableView;
+    private Card mockCard;
 
     @Before
     public void beforeEach() {
         sut = new GameTable();
+        mockGameTableView = mock(GameTableView.class);
+        sut.setObserver(mockGameTableView);
+        mockCard = mock(Card.class);
     }
 
     @Test
@@ -49,21 +50,17 @@ public class GameTableTest {
     public void addStackShouldIncreaseStackArrayListByOne() {
         expectedSize = 1;
 
-        Card card = mock(Card.class);
-
-        sut.addStack(card);
+        sut.addStack(mockCard);
 
         assertEquals(expectedSize, sut.getStacks().size());
     }
 
     @Test
     public void addStackShouldCallObserverOnStackAdded() {
-        GameTableView gameTableView = mock(GameTableView.class);
-        sut.setObserver(gameTableView);
-        Card card = mock(Card.class);
-        sut.addStack(card);
 
-        verify(gameTableView).onStackAdded(sut.getStacks().get(0));
+        sut.addStack(mockCard);
+
+        verify(mockGameTableView).onStackAdded(sut.getStacks().get(0));
     }
 
 
