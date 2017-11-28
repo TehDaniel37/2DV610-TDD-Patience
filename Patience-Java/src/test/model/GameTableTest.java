@@ -86,6 +86,11 @@ public class GameTableTest {
         verify(mockStack1).mergeStack(mockStack2);
     }
 
+    @Test (expected = IllegalAccessException.class)
+    public void mergeStacksShouldThrowIllegalAccessExceptionIfStackPositionIsInvalid() throws IllegalAccessException {
+        sut.mergeStacks(0, 1);
+    }
+
 
 
 
