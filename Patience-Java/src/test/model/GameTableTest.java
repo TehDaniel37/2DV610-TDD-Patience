@@ -64,7 +64,7 @@ public class GameTableTest {
     }
 
     @Test
-    public void mergeStacksShouldCallOnStacksMerged() {
+    public void mergeStacksShouldCallOnStacksMerged() throws IllegalAccessException {
         sut.addStack(mockCard);
         sut.addStack(mockCard);
 
@@ -74,7 +74,7 @@ public class GameTableTest {
     }
 
     @Test
-    public void mergeStacksShouldCallMergeMethodInStack() {
+    public void mergeStacksShouldCallMergeMethodInStack() throws IllegalAccessException {
         Stack mockStack1 = mock(Stack.class);
         Stack mockStack2 = mock(Stack.class);
 

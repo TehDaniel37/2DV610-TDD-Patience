@@ -33,10 +33,19 @@ public class GameTable {
         gameObserver.onStackAdded(stack);
     }
 
-    public void mergeStacks(int positionBottomStack, int positionTopStack) {
+    public void mergeStacks(int positionBottomStack, int positionTopStack) throws IllegalAccessException {
+        int upperBound = stacks.size();
+        int lowerBound = 0;
 
-        stacks.get(positionBottomStack).mergeStack(stacks.get(positionTopStack));
-        gameObserver.onStacksMerged(positionBottomStack, positionTopStack);
+        if (positionBottomStack >= upperBound || positionBottomStack < lowerBound
+                || positionTopStack >= upperBound || positionTopStack < lowerBound) {
+            throw new IllegalAccessException();
+        }
+        else {
+            stacks.get(positionBottomStack).mergeStack(stacks.get(positionTopStack));
+            gameObserver.onStacksMerged(positionBottomStack, positionTopStack);
+        }
+
     }
 
 
