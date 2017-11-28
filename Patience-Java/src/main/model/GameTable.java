@@ -35,6 +35,7 @@ public class GameTable {
 
     public void mergeStacks(int positionBottomStack, int positionTopStack) {
 
+        stacks.get(positionBottomStack).mergeStack(stacks.get(positionTopStack));
         gameObserver.onStacksMerged(positionBottomStack, positionTopStack);
     }
 
