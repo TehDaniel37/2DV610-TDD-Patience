@@ -28,4 +28,12 @@ public class CardTest {
 
         assertTrue(card1.equals(card2));
     }
+
+    @Test
+    public void equalsShouldReturnFalse() {
+        Card card1 = new Card(Color.Spades, Value.Eight);
+        Object notCard = new Object();
+
+        assertFalse(card1.equals(notCard));
+    }
 }
