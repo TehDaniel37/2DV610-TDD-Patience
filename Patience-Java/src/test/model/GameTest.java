@@ -61,6 +61,17 @@ public class GameTest {
         
         assertTrue(sut.stacksMergeable(mockStackBottom, mockStackTop));
     }
+
+    @Test
+    public void stacksMergeableShouldReturnFalseWhenTopStackIsEmpty() throws EmptyCardStackException {
+        Stack mockStackBottom = mockStack(mockCard(Color.Clubs, Value.Jack), 0);
+        Stack mockStackEmpty= mock(Stack.class);
+
+        when(mockStackEmpty.getPosition()).thenReturn(1);
+        when(mockStackEmpty.getTop()).thenThrow(new EmptyCardStackException());
+
+        assertFalse(sut.stacksMergeable(mockStackBottom, mockStackEmpty));
+    }
     
     private Stack mockStack(Card top, Integer pos) {
         Stack stack = mock(Stack.class);
