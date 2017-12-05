@@ -55,13 +55,7 @@ public class VisualCardTest {
         when(mockCard.getColor()).thenReturn(Color.Diamonds);
         when(mockCard.getValue()).thenReturn(Value.Eight);
 
-        VisualCard vCard = null;
-        
-        try {
-            vCard = new VisualCard(mockCard);
-        } catch (IOException ex) {
-            fail();
-        }
+        VisualCard vCard = new VisualCard(mockCard);
         
         assertImagesEqual(cardImageEightOfDiamonds, vCard.getImage());
     }

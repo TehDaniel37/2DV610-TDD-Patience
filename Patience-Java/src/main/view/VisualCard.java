@@ -18,14 +18,21 @@ public class VisualCard {
 
     private Image image;
 
-    public VisualCard(Card card) throws IOException {
-        image = VisualCard.CardImageLoader.getImage(card.getColor(), card.getValue());
+    public VisualCard(Card card) {
+        try {
+            image = VisualCard.CardImageLoader.getCardImage(card.getColor(), card.getValue());
+        } catch (IOException ex) {
+            
+        }
     }
 
     public Image getImage() {
         return image;
     }
     
+    /*
+     * Inner static class that holds a sprite sheet of all card images.
+     */
     private static class CardImageLoader {
     
     private static final String CARDS_SHEET_PATH = "cards.png";
@@ -36,11 +43,17 @@ public class VisualCard {
     private static final int SHEET_CARD_WIDTH = 362;
     private static final int SHEET_CARD_HEIGHT = 542;
 
-    private static BufferedImage cardSheet;
+    private static BufferedImage cardSheet = null;
     
-    public static Image getImage(Color color, Value value) throws IOException {
+    /*
+     * Returns a subimage of the requested card from the spritesheet.
+     *  
+     * Loads the spritesheet only the first time it is called. 
+     */
+    public static Image getCardImage(Color color, Value value) throws IOException {
         if (cardSheet == null) {
-            cardSheet = ImageIO.read(VisualCard.CardImageLoader.class.getClassLoader().getResource(CARDS_SHEET_PATH));
+            cardSheet = ImageIO.read(
+                    VisualCard.CardImageLoader.class.getClassLoader().getResource(CARDS_SHEET_PATH));
         }
         
         int xIndex = value.ordinal();
@@ -48,10 +61,10 @@ public class VisualCard {
         int xPos = SHEET_OFFSET_X + (SHEET_CARD_WIDTH + SHEET_CARD_DISTANCE_X) * xIndex;
         int yPos = SHEET_OFFSET_Y + (SHEET_CARD_HEIGHT + SHEET_CARD_DISTANCE_Y) * yIndex;
         
-        Image img = SwingFXUtils.toFXImage(
+        Image cardImage = SwingFXUtils.toFXImage(
                 cardSheet.getSubimage(xPos, yPos, SHEET_CARD_WIDTH, SHEET_CARD_HEIGHT), null);
         
-        return img;
+        return cardImage;
     }
 }
 }
