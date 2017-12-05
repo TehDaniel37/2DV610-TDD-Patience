@@ -11,17 +11,24 @@ import static org.junit.Assert.*;
 
 public class GameTableViewTest {
 
+    GameTableView sut;
+
+    @Before
+    public void beforeEach() {
+        sut = new GameTableView();
+    }
+
 
     @Test
     public void constructorShouldCreateVisualStackArrayList() {
-        GameTableView sut = new GameTableView();
+        sut = new GameTableView();
 
         assertNotNull(sut.getVisualStacks());
     }
 
     @Test
     public void constructorShouldCreateGridPane() {
-        GameTableView sut = new GameTableView();
+        sut = new GameTableView();
 
         assertNotNull(sut.getStackGridPane());
     }
