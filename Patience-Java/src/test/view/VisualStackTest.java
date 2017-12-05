@@ -18,6 +18,8 @@ import static org.mockito.Mockito.when;
 
 public class VisualStackTest {
 
+    private VisualStack sut;
+
     @Test
     public void constructorShouldCreateVisualCard() {
         Stack mockStack = mock(Stack.class);
@@ -26,8 +28,6 @@ public class VisualStackTest {
         when(mockCard.getColor()).thenReturn(Color.Spades);
         when(mockCard.getValue()).thenReturn(Value.Six);
 
-        VisualStack sut = null;
-
         try {
             when(mockStack.getTop()).thenReturn(mockCard);
             sut = new VisualStack(mockStack);
@@ -35,6 +35,6 @@ public class VisualStackTest {
             fail();
         }
 
-        assertNotNull(sut.topCard);
+        assertNotNull(sut.getTopCard());
     }
 }
