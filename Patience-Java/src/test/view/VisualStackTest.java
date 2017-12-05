@@ -26,11 +26,14 @@ public class VisualStackTest {
         when(mockCard.getColor()).thenReturn(Color.Spades);
         when(mockCard.getValue()).thenReturn(Value.Six);
 
+        VisualStack sut = null;
+
         try {
             when(mockStack.getTop()).thenReturn(mockCard);
-        } catch (EmptyCardStackException ignored) { }
-
-        VisualStack sut = new VisualStack(mockStack);
+            sut = new VisualStack(mockStack);
+        } catch (EmptyCardStackException ignored) {
+            fail();
+        }
 
         assertNotNull(sut.topCard);
     }

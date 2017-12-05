@@ -1,5 +1,6 @@
 package main.view;
 
+import main.exception.EmptyCardStackException;
 import main.model.Stack;
 
 /**
@@ -9,7 +10,7 @@ public class VisualStack {
 
     public VisualCard topCard;
 
-    public VisualStack(Stack stack) {
-
+    public VisualStack(Stack stack) throws EmptyCardStackException {
+        topCard = new VisualCard(stack.getTop());
     }
 }
