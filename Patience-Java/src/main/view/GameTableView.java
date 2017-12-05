@@ -16,7 +16,7 @@ public class GameTableView implements GameObserver {
     private GridPane stackGridPane;
 
     public GameTableView() {
-
+        visualStacks = new ArrayList<>();
     }
 
     public ArrayList<VisualStack> getVisualStacks() {
