@@ -14,11 +14,8 @@ import org.junit.Test;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.geom.Dimension2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -33,12 +30,13 @@ public class VisualCardTest {
     private static final int SHEET_CARD_WIDTH = 362;
     private static final int SHEET_CARD_HEIGHT = 542;
 
-    private static BufferedImage cardImagesSheet;
     private static Image cardImageEightOfDiamonds;
+
+    private VisualCard sut;
 
     @BeforeClass
     public static void beforeClass() throws IOException {
-        cardImagesSheet = ImageIO.read(VisualCardTest.class.getClassLoader().getResource("cards.png"));
+        BufferedImage cardImagesSheet = ImageIO.read(VisualCardTest.class.getClassLoader().getResource("cards.png"));
         
         cardImageEightOfDiamonds = SwingFXUtils.toFXImage(cardImagesSheet.getSubimage(
                 SHEET_OFFSET_X + (SHEET_CARD_WIDTH + SHEET_CARD_DISTANCE_X) * 7,
@@ -48,21 +46,20 @@ public class VisualCardTest {
                 null);
     }
 
-
     @Test
     public void constructorShouldSetCorrectImage() {
         Card mockCard = mock(Card.class);
         when(mockCard.getColor()).thenReturn(Color.Diamonds);
         when(mockCard.getValue()).thenReturn(Value.Eight);
 
-        VisualCard vCard = new VisualCard(mockCard);
+        sut = new VisualCard(mockCard);
         
-        assertImagesEqual(cardImageEightOfDiamonds, vCard.getImage());
+        assertImagesEqual(cardImageEightOfDiamonds, sut.getImage());
     }
     
     @Test (expected = IllegalArgumentException.class)
     public void constructorShouldThrowIllegalArgumentExceptionWhenCardIsNull() {
-        VisualCard vCard = new VisualCard(null);
+        sut = new VisualCard(null);
     }
 
     private void assertImagesEqual(Image expected, Image actual) {
