@@ -1,7 +1,7 @@
 package main.view;
 
-import java.io.File;
 import java.io.IOException;
+
 import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -19,6 +19,10 @@ public class VisualCard {
     private Image image;
 
     public VisualCard(Card card) {
+        if (card == null) {
+            throw new IllegalArgumentException("Card cannot be null!");
+        }
+
         try {
             image = VisualCard.CardImageLoader.getCardImage(card.getColor(), card.getValue());
         } catch (IOException ex) {
@@ -50,7 +54,7 @@ public class VisualCard {
      *  
      * Loads the spritesheet only the first time it is called. 
      */
-    public static Image getCardImage(Color color, Value value) throws IOException {
+    static Image getCardImage(Color color, Value value) throws IOException {
         if (cardSheet == null) {
             cardSheet = ImageIO.read(
                     VisualCard.CardImageLoader.class.getClassLoader().getResource(CARDS_SHEET_PATH));
