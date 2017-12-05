@@ -23,10 +23,15 @@ public class GameTableView implements GameObserver {
         return visualStacks;
     }
 
+    public GridPane getStackGridPane() {
+        return stackGridPane;
+    }
+
     @Override
     public void onStackAdded(Stack stack) {
 
     }
+
 
     @Override
     public void onStacksMerged(int positionOfMerged, int positionOfDeleted) {

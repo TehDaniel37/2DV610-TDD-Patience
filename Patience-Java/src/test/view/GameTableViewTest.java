@@ -18,4 +18,11 @@ public class GameTableViewTest {
 
         assertNotNull(sut.getVisualStacks());
     }
+
+    @Test
+    public void constructorShouldCreateGridPane() {
+        GameTableView sut = new GameTableView();
+
+        assertNotNull(sut.getStackGridPane());
+    }
 }
