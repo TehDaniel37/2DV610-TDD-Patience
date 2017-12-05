@@ -50,9 +50,9 @@ public class VisualCard {
     private static BufferedImage cardSheet = null;
     
     /*
-     * Returns a subimage of the requested card from the spritesheet.
+     * Returns a sub-image of the requested card from the sprite sheet.
      *  
-     * Loads the spritesheet only the first time it is called. 
+     * Loads the sprite sheet only the first time it is called.
      */
     static Image getCardImage(Color color, Value value) throws IOException {
         if (cardSheet == null) {

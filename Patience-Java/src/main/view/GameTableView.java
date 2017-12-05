@@ -7,13 +7,10 @@ import main.model.Stack;
 /**
  * Created by Caroline Nilsson on 2017-11-27.
  */
-public class GameTableView extends Application implements GameObserver {
+public class GameTableView implements GameObserver {
 
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
 
-    }
 
     @Override
     public void onStackAdded(Stack stack) {
