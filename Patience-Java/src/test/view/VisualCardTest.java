@@ -59,6 +59,11 @@ public class VisualCardTest {
         
         assertImagesEqual(cardImageEightOfDiamonds, vCard.getImage());
     }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void constructorShouldThrowIllegalArgumentExceptionWhenCardIsNull() {
+        VisualCard vCard = new VisualCard(null);
+    }
 
     private void assertImagesEqual(Image expected, Image actual) {
         Dimension expectedSize = new Dimension((int)expected.getWidth(), (int)expected.getHeight());
