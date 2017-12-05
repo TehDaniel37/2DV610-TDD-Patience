@@ -38,7 +38,8 @@ public class VisualCardTest {
 
     @BeforeClass
     public static void beforeClass() throws IOException {
-        cardImagesSheet = ImageIO.read(new File("Patience-Java/res/cards.png"));
+        cardImagesSheet = ImageIO.read(VisualCardTest.class.getClassLoader().getResource("cards.png"));
+        
         cardImageEightOfDiamonds = SwingFXUtils.toFXImage(cardImagesSheet.getSubimage(
                 SHEET_OFFSET_X + (SHEET_CARD_WIDTH + SHEET_CARD_DISTANCE_X) * 7,
                 SHEET_OFFSET_Y + (SHEET_CARD_HEIGHT + SHEET_CARD_DISTANCE_Y) * 2,
@@ -54,8 +55,14 @@ public class VisualCardTest {
         when(mockCard.getColor()).thenReturn(Color.Diamonds);
         when(mockCard.getValue()).thenReturn(Value.Eight);
 
-        VisualCard vCard = new VisualCard(mockCard);
-
+        VisualCard vCard = null;
+        
+        try {
+            vCard = new VisualCard(mockCard);
+        } catch (IOException ex) {
+            fail();
+        }
+        
         assertImagesEqual(cardImageEightOfDiamonds, vCard.getImage());
     }
 
