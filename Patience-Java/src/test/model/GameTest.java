@@ -1,6 +1,7 @@
 package test.model;
 
 import main.exception.EmptyCardStackException;
+import main.exception.EmptyDeckException;
 import main.model.*;
 
 import org.junit.AfterClass;
@@ -11,6 +12,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class GameTest {
@@ -71,6 +73,20 @@ public class GameTest {
         when(mockStackEmpty.getTop()).thenThrow(new EmptyCardStackException());
 
         assertFalse(sut.stacksMergeable(mockStackBottom, mockStackEmpty));
+    }
+
+    @Test
+    public void dealNewCardShouldCollectCardFromDeckAndCreateAStack() throws EmptyDeckException {
+        Card mockCard = mock(Card.class);
+        when(mockCard.getValue()).thenReturn(Value.Ace);
+        when(mockCard.getColor()).thenReturn(Color.Hearts);
+        when(deck.deal()).thenReturn(mockCard);
+
+        sut.dealNewCard();
+
+        verify(table).addStack(mockCard);
+
+
     }
     
     private Stack mockStack(Card top, Integer pos) {

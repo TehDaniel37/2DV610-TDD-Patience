@@ -2,7 +2,6 @@ package main.model;
 
 import main.exception.EmptyCardStackException;
 
-import java.util.ArrayList;
 
 public class Game {
     private GameTable gameTable;
@@ -31,5 +30,9 @@ public class Game {
         }
 
         return card1.getColor() == card2.getColor() || card1.getValue() == card2.getValue();
+    }
+
+    public void dealNewCard() {
+        
     }
 }
