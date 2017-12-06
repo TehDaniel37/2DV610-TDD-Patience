@@ -41,6 +41,6 @@ public class GameTableViewTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        
+
     }
 }

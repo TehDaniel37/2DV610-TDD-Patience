@@ -19,6 +19,8 @@ public class GameTableView extends ScrollPane implements GameObserver {
     public GameTableView() {
         visualStacks = new ArrayList<>();
         stackGridPane = new GridPane();
+
+        this.setContent(stackGridPane);
     }
 
     public ArrayList<VisualStack> getVisualStacks() {
