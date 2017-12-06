@@ -2,7 +2,9 @@ package main.view;
 
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import main.model.Deck;
 import main.model.Game;
+import main.model.GameTable;
 import main.model.Stack;
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class GameTableView extends ScrollPane implements GameObserver {
     public GameTableView() {
         visualStacks = new ArrayList<>();
         stackGridPane = new GridPane();
+        currentGame = new Game(new Deck(), new GameTable());
 
         this.setContent(stackGridPane);
     }
