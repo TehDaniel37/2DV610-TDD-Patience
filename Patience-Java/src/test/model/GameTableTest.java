@@ -7,6 +7,7 @@ import main.view.GameObserver;
 import main.view.GameTableView;
 import org.junit.Before;
 import org.junit.Test;
+import org.testfx.framework.junit.ApplicationTest;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class GameTableTest {
+public class GameTableTest extends ApplicationTest {
 
     private int expectedSize;
     private GameTable sut;
