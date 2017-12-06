@@ -38,7 +38,10 @@ public class Game {
         gameTable.addStack(card);
     }
 
-    public void setUpGameStart() {
-
+    public void setUpGameStart() throws EmptyDeckException {
+        Card card = deck.deal();
+        gameTable.addStack(card);
+        card = deck.deal();
+        gameTable.addStack(card);
     }
 }
