@@ -55,6 +55,24 @@ public class VisualStackTest {
         assertEquals(topCardAfterUpdate, sut.getTopCard().getCard());
     }
 
+    @Test
+    public void updateShouldRemoveCardWhenStackIsEmpty() {
+        Stack mockStack = mock(Stack.class);
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
+
+        try {
+            when(mockStack.getTop()).thenReturn(mockCard);
+            sut = new VisualStack(mockStack);
+            when(mockStack.getTop()).thenThrow(new EmptyCardStackException());
+
+            sut.update();
+        } catch (EmptyCardStackException ex) {
+            fail();
+        }
+
+        assertNull(sut.getTopCard());
+    }
+
     private Card mockCard(Color color, Value value) {
         Card card = mock(Card.class);
 
