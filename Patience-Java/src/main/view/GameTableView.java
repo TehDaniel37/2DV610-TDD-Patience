@@ -33,7 +33,13 @@ public class GameTableView extends ScrollPane implements GameObserver {
 
     @Override
     public void onStackAdded(Stack stack) {
+        try {
+            VisualStack newStack = new VisualStack(stack);
+            visualStacks.add(newStack);
+        }
+        catch (Exception e) {
 
+        }
     }
 
 
