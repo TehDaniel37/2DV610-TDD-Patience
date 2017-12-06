@@ -1,11 +1,8 @@
 package main.view;
 
-import javafx.application.Application;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
+import main.model.Game;
 import main.model.Stack;
 
 import java.util.ArrayList;
@@ -18,7 +15,8 @@ public class GameTableView extends ScrollPane implements GameObserver {
     private final int MAX_ROWS = 5;
 
     private ArrayList<VisualStack> visualStacks;
-    private GridPane stackGridPane;
+    private final GridPane stackGridPane;
+    private Game currentGame;
 
     public GameTableView() {
         visualStacks = new ArrayList<>();
@@ -33,6 +31,10 @@ public class GameTableView extends ScrollPane implements GameObserver {
 
     public GridPane getStackGridPane() {
         return stackGridPane;
+    }
+
+    public Game getCurrentGame() {
+        return currentGame;
     }
 
     @Override
@@ -67,4 +69,6 @@ public class GameTableView extends ScrollPane implements GameObserver {
             stackGridPane.add(vs, indexColumn, indexRow);
         }
     }
+
+
 }

@@ -3,18 +3,14 @@ package test.view;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import main.exception.EmptyCardStackException;
-import main.exception.EmptyDeckException;
 import main.model.Card;
 import main.model.Color;
 import main.model.Stack;
 import main.model.Value;
 import main.view.GameTableView;
-import main.view.VisualStack;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.After;
@@ -23,11 +19,8 @@ import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.testfx.api.FxAssert.verifyThat;
 
 public class GameTableViewTest extends ApplicationTest {
 
@@ -38,6 +31,10 @@ public class GameTableViewTest extends ApplicationTest {
         sut = new GameTableView();
     }
 
+    @Override
+    public void start(Stage stage) throws Exception {
+
+    }
 
     @Test
     public void constructorShouldCreateVisualStackArrayList() {
@@ -52,6 +49,11 @@ public class GameTableViewTest extends ApplicationTest {
     @Test
     public void constructorShouldAddGridPaneToGameTableView() {
         assertNotNull(sut.getContent());
+    }
+
+    @Test
+    public void constructorShouldCreateGame() {
+        assertNotNull(sut.getCurrentGame());
     }
 
     @Test
@@ -73,11 +75,6 @@ public class GameTableViewTest extends ApplicationTest {
 
     }
 
-
-    @Override
-    public void start(Stage stage) throws Exception {
-
-    }
 
     private Stack initializeMockStack() throws EmptyCardStackException {
         Stack stack = mock(Stack.class);
