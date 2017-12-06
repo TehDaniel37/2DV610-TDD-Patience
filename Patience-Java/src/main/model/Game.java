@@ -44,7 +44,7 @@ public class Game {
         }
     }
 
-    public boolean setUpGameStart() throws EmptyDeckException {
+    public boolean setUpGameStart() {
         try {
             Card card = deck.deal();
             gameTable.addStack(card);

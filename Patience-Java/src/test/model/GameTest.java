@@ -89,24 +89,20 @@ public class GameTest {
 
     @Test
     public void dealNewCardShouldReturnTrueIfDealWasSuccessful() throws EmptyDeckException {
-        Card mockCard = mockCard(Color.Spades, Value.Ace);
-        when(deck.deal()).thenReturn(mockCard);
-
+        mockDeckDealToCard();
         assertTrue(sut.dealNewCard());
 
     }
 
     @Test
     public void dealNewCardShouldReturnFalseIfDealWasNotSuccessful() throws EmptyDeckException {
-        when(deck.deal()).thenThrow(new EmptyDeckException());
-
+        mockDeckDealToThrowException(new EmptyDeckException());
         assertFalse(sut.dealNewCard());
     }
 
     @Test
     public void setUpGameStartShouldAddTwoStacksToGameTable() throws EmptyDeckException {
         Card mockCard = mockCard(Color.Spades, Value.Ace);
-
         when(deck.deal()).thenReturn(mockCard);
         sut.setUpGameStart();
 
@@ -116,19 +112,13 @@ public class GameTest {
 
     @Test
     public void setUpGameStartShouldReturnTrueIfSuccessful() throws EmptyDeckException {
-        Card mockCard = mockCard(Color.Spades, Value.Ace);
-
-        when(deck.deal()).thenReturn(mockCard);
-
+        mockDeckDealToCard();
         assertTrue(sut.setUpGameStart());
     }
 
     @Test
-    public void setUpGameStartShouldReturnFalseIfNotSuccessful() throws EmptyDeckException {
-        Card mockCard = mockCard(Color.Spades, Value.Ace);
-
-        when(deck.deal()).thenThrow(new EmptyDeckException());
-
+    public void setUpGameStartShouldReturnFalseIfNotSuccessful() {
+        mockDeckDealToThrowException(new EmptyDeckException());
         assertFalse(sut.setUpGameStart());
     }
     
@@ -155,5 +145,25 @@ public class GameTest {
         when(card.getValue()).thenReturn(value);
         
         return card;
+    }
+
+    private void mockDeckDealToCard() throws EmptyDeckException {
+        try {
+            Card mockCard = mockCard(Color.Spades, Value.Ace);
+            when(deck.deal()).thenReturn(mockCard);
+        }
+        catch (EmptyDeckException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void mockDeckDealToThrowException(EmptyDeckException ex) {
+        try {
+            when(deck.deal()).thenThrow(ex);
+        }
+        catch (EmptyDeckException exception) {
+            exception.printStackTrace();
+        }
+
     }
 }
