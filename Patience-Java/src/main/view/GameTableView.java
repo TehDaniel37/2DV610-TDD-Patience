@@ -56,6 +56,7 @@ public class GameTableView extends ScrollPane implements GameObserver {
     @Override
     public void onStacksMerged(int positionOfMerged, int positionOfDeleted) {
         visualStacks.get(positionOfMerged).update();
+        visualStacks.remove(positionOfDeleted);
     }
 
     public void updateGridPane() {
