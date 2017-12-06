@@ -38,6 +38,7 @@ public class GameTableView extends ScrollPane implements GameObserver {
         try {
             VisualStack newStack = new VisualStack(stack);
             visualStacks.add(newStack);
+            updateGridPane();
         }
         catch (Exception e) {
 
@@ -51,6 +52,17 @@ public class GameTableView extends ScrollPane implements GameObserver {
     }
 
     public void updateGridPane() {
+        stackGridPane.getChildren().clear();
+        int indexRow = 0;
+        int indexColumn = 0;
 
+        for (int i = 0; i < visualStacks.size() ; i++) {
+            VisualStack vs = visualStacks.get(i);
+            if (indexColumn == 5) {
+                indexColumn = 0;
+                indexRow++;
+            }
+            stackGridPane.add(vs, indexColumn, indexRow);
+        }
     }
 }
