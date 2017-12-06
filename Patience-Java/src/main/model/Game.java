@@ -37,4 +37,8 @@ public class Game {
         Card card = deck.deal();
         gameTable.addStack(card);
     }
+
+    public void setUpGameStart() {
+
+    }
 }

@@ -11,9 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class GameTest {
     
@@ -77,15 +75,24 @@ public class GameTest {
 
     @Test
     public void dealNewCardShouldCollectCardFromDeckAndCreateAStack() throws EmptyDeckException {
-        Card mockCard = mock(Card.class);
-        when(mockCard.getValue()).thenReturn(Value.Ace);
-        when(mockCard.getColor()).thenReturn(Color.Hearts);
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
         when(deck.deal()).thenReturn(mockCard);
 
         sut.dealNewCard();
 
         verify(table).addStack(mockCard);
 
+
+    }
+
+    @Test
+    public void setUpGameStartShouldAddTwoStacksToGameTable() throws EmptyDeckException {
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
+
+        when(deck.deal()).thenReturn(mockCard);
+        sut.setUpGameStart();
+
+        verify(table, times(2)).addStack(mockCard);
 
     }
     
