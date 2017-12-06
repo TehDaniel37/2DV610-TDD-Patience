@@ -56,11 +56,11 @@ public class VisualStackTest {
             when(mockStack.getTop()).thenReturn(firstTopCard);
             sut = new VisualStack(mockStack);
             when(mockStack.getTop()).thenReturn(topCardAfterUpdate);
+
+            sut.update();
         } catch (EmptyCardStackException ex) {
             fail();
         }
-
-        sut.update();
 
         assertEquals(topCardAfterUpdate, sut.getTopCard().getCard());
     }

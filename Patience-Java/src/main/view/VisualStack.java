@@ -9,8 +9,10 @@ import main.model.Stack;
 public class VisualStack {
 
     private VisualCard topCard;
+    private Stack stack;
 
     public VisualStack(Stack stack) throws EmptyCardStackException {
+        this.stack = stack;
         topCard = new VisualCard(stack.getTop());
     }
 
@@ -18,7 +20,7 @@ public class VisualStack {
         return topCard;
     }
 
-    public void update() {
-
+    public void update() throws EmptyCardStackException {
+        topCard = new VisualCard(stack.getTop());
     }
 }

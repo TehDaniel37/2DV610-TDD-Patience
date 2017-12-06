@@ -16,12 +16,15 @@ import main.model.Value;
  */
 public class VisualCard {
 
+    private Card card;
     private Image image;
 
     public VisualCard(Card card) {
         if (card == null) {
             throw new IllegalArgumentException("Card cannot be null!");
         }
+
+        this.card = card;
 
         try {
             image = VisualCard.CardImageLoader.getCardImage(card.getColor(), card.getValue());
@@ -35,7 +38,7 @@ public class VisualCard {
     }
 
     public Card getCard() {
-        return null;
+        return card;
     }
     
     /*
