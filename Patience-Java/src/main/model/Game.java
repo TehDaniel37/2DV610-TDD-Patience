@@ -1,6 +1,7 @@
 package main.model;
 
 import main.exception.EmptyCardStackException;
+import main.exception.EmptyDeckException;
 
 
 public class Game {
@@ -32,7 +33,8 @@ public class Game {
         return card1.getColor() == card2.getColor() || card1.getValue() == card2.getValue();
     }
 
-    public void dealNewCard() {
-        
+    public void dealNewCard() throws EmptyDeckException {
+        Card card = deck.deal();
+        gameTable.addStack(card);
     }
 }
