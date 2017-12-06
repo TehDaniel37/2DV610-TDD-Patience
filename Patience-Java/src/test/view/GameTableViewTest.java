@@ -12,9 +12,6 @@ import main.model.Stack;
 import main.model.Value;
 import main.view.GameTableView;
 import main.view.VisualStack;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -30,11 +27,12 @@ public class GameTableViewTest extends ApplicationTest {
 
     private GameTableView sut;
     private Stack stack;
+    private VisualStack visualStack;
 
     @Before
     public void beforeEach() throws EmptyCardStackException{
         sut = new GameTableView();
-        stack = initializeMockStack();
+        mockStack();
     }
 
     @Override
@@ -80,10 +78,7 @@ public class GameTableViewTest extends ApplicationTest {
 
     @Test
     public void onStacksMergedShouldCallUpdateVisualStack() {
-        VisualStack visualStack = mock(VisualStack.class);
-        ArrayList<VisualStack> stacks = sut.getVisualStacks();
-        stacks.add(visualStack);
-        stacks.add(visualStack);
+        visualStack = mockVisualStack();
         sut.onStacksMerged(0, 1);
 
         verify(visualStack).update();
@@ -92,17 +87,23 @@ public class GameTableViewTest extends ApplicationTest {
 
     @Test
     public void onStacksMergedShouldDeleteVisualStackRepresentingRemovedStack() {
-        VisualStack visualStack = mock(VisualStack.class);
-        ArrayList<VisualStack> stacks = sut.getVisualStacks();
-        stacks.add(visualStack);
-        stacks.add(visualStack);
+        visualStack = mockVisualStack();
         sut.onStacksMerged(0, 1);
         int expectedSize = 1;
 
         assertEquals(expectedSize, sut.getVisualStacks().size());
     }
 
-    private Stack initializeMockStack() throws EmptyCardStackException {
+    private VisualStack mockVisualStack() {
+        VisualStack visualStack = mock(VisualStack.class);
+        ArrayList<VisualStack> stacks = sut.getVisualStacks();
+        stacks.add(visualStack);
+        stacks.add(visualStack);
+
+        return visualStack;
+    }
+
+    private Stack mockStack() throws EmptyCardStackException {
         stack = mock(Stack.class);
         Card card = mock(Card.class);
         when(card.getColor()).thenReturn(Color.Hearts);
