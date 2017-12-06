@@ -10,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -92,6 +94,14 @@ public class GameTest {
 
         assertTrue(sut.dealNewCard());
 
+    }
+
+    @Test
+    public void dealNewCardShouldReturnFalseIfDealWasNotSuccessful() throws EmptyDeckException {
+        ArrayList<Card> cards = new ArrayList<>();
+        deck.setCards(cards);
+
+        assertFalse(sut.dealNewCard());
     }
 
     @Test
