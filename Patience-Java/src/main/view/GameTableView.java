@@ -15,6 +15,8 @@ import java.util.ArrayList;
  */
 public class GameTableView extends ScrollPane implements GameObserver {
 
+    private final int MAX_ROWS = 5;
+
     private ArrayList<VisualStack> visualStacks;
     private GridPane stackGridPane;
 
@@ -58,7 +60,7 @@ public class GameTableView extends ScrollPane implements GameObserver {
 
         for (int i = 0; i < visualStacks.size() ; i++) {
             VisualStack vs = visualStacks.get(i);
-            if (indexColumn == 5) {
+            if (indexColumn == MAX_ROWS) {
                 indexColumn = 0;
                 indexRow++;
             }

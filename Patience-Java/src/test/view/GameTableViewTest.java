@@ -56,12 +56,7 @@ public class GameTableViewTest extends ApplicationTest {
 
     @Test
     public void onStackAddedShouldAddVisualStackToVisualStacks() throws EmptyCardStackException {
-        Stack stack = mock(Stack.class);
-        Card card = mock(Card.class);
-        when(card.getColor()).thenReturn(Color.Hearts);
-        when(card.getValue()).thenReturn(Value.Ace);
-        when(stack.getTop()).thenReturn(card);
-
+        Stack stack = initializeMockStack();
         sut.onStackAdded(stack);
 
         int expectedSize = 1;
@@ -71,12 +66,7 @@ public class GameTableViewTest extends ApplicationTest {
 
     @Test
     public void onStackAddedShouldUpdatePane() throws EmptyCardStackException {
-        Stack stack = mock(Stack.class);
-        Card card = mock(Card.class);
-        when(card.getColor()).thenReturn(Color.Hearts);
-        when(card.getValue()).thenReturn(Value.Ace);
-        when(stack.getTop()).thenReturn(card);
-
+        Stack stack = initializeMockStack();
         sut.onStackAdded(stack);
 
         assertNotNull(getNode(0,0, sut.getStackGridPane()));
@@ -89,7 +79,17 @@ public class GameTableViewTest extends ApplicationTest {
 
     }
 
-    public Node getNode (int row, int column, GridPane gridPane) {
+    private Stack initializeMockStack() throws EmptyCardStackException {
+        Stack stack = mock(Stack.class);
+        Card card = mock(Card.class);
+        when(card.getColor()).thenReturn(Color.Hearts);
+        when(card.getValue()).thenReturn(Value.Ace);
+        when(stack.getTop()).thenReturn(card);
+
+        return stack;
+    }
+
+    private Node getNode (int row, int column, GridPane gridPane) {
         Node result = null;
         ObservableList<Node> children = gridPane.getChildren();
 
