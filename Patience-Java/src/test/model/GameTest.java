@@ -86,6 +86,15 @@ public class GameTest {
     }
 
     @Test
+    public void dealNewCardShouldReturnTrueIfDealWasSuccessful() throws EmptyDeckException {
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
+        when(deck.deal()).thenReturn(mockCard);
+
+        assertTrue(sut.dealNewCard());
+
+    }
+
+    @Test
     public void setUpGameStartShouldAddTwoStacksToGameTable() throws EmptyDeckException {
         Card mockCard = mockCard(Color.Spades, Value.Ace);
 

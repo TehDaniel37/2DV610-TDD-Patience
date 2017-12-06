@@ -33,9 +33,10 @@ public class Game {
         return card1.getColor() == card2.getColor() || card1.getValue() == card2.getValue();
     }
 
-    public void dealNewCard() throws EmptyDeckException {
+    public boolean dealNewCard() throws EmptyDeckException {
         Card card = deck.deal();
         gameTable.addStack(card);
+        return false;
     }
 
     public void setUpGameStart() throws EmptyDeckException {
