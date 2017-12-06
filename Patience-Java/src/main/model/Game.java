@@ -49,6 +49,6 @@ public class Game {
         gameTable.addStack(card);
         card = deck.deal();
         gameTable.addStack(card);
-        return false;
+        return true;
     }
 }
