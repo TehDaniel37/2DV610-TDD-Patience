@@ -40,7 +40,7 @@ public class Game {
             return true;
         }
         catch (EmptyDeckException ex) {
-            return true;
+            return false;
         }
     }
 

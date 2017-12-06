@@ -98,8 +98,7 @@ public class GameTest {
 
     @Test
     public void dealNewCardShouldReturnFalseIfDealWasNotSuccessful() throws EmptyDeckException {
-        ArrayList<Card> cards = new ArrayList<>();
-        deck.setCards(cards);
+        when(deck.deal()).thenThrow(new EmptyDeckException());
 
         assertFalse(sut.dealNewCard());
     }
