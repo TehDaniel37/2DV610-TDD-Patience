@@ -19,6 +19,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -80,6 +82,9 @@ public class GameTableViewTest extends ApplicationTest {
     @Test
     public void onStacksMergedShouldCallUpdateVisualStack() {
         VisualStack visualStack = mock(VisualStack.class);
+        ArrayList<VisualStack> stacks = sut.getVisualStacks();
+        stacks.add(visualStack);
+        stacks.add(visualStack);
         sut.onStacksMerged(0, 1);
 
         verify(visualStack).update();
