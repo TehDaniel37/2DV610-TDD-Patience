@@ -45,10 +45,15 @@ public class Game {
     }
 
     public boolean setUpGameStart() throws EmptyDeckException {
-        Card card = deck.deal();
-        gameTable.addStack(card);
-        card = deck.deal();
-        gameTable.addStack(card);
-        return true;
+        try {
+            Card card = deck.deal();
+            gameTable.addStack(card);
+            card = deck.deal();
+            gameTable.addStack(card);
+            return true;
+        }
+        catch (EmptyDeckException ex) {
+            return false;
+        }
     }
 }
