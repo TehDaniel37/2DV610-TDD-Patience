@@ -11,12 +11,9 @@ import org.junit.BeforeClass;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class VisualStackTest {
@@ -26,10 +23,7 @@ public class VisualStackTest {
     @Test
     public void constructorShouldCreateVisualCard() {
         Stack mockStack = mock(Stack.class);
-        Card mockCard = mock(Card.class);
-
-        when(mockCard.getColor()).thenReturn(Color.Spades);
-        when(mockCard.getValue()).thenReturn(Value.Six);
+        Card mockCard = mockCard(Color.Spades, Value.Six);
 
         try {
             when(mockStack.getTop()).thenReturn(mockCard);
@@ -39,18 +33,14 @@ public class VisualStackTest {
         }
 
         assertNotNull(sut.getTopCard());
+        assertEquals(mockCard, sut.getTopCard().getCard());
     }
 
     @Test
     public void updateShouldUpdateTopCard() {
-        Card firstTopCard = mock(Card.class);
-        Card topCardAfterUpdate = mock(Card.class);
+        Card firstTopCard = mockCard(Color.Diamonds, Value.Four);
+        Card topCardAfterUpdate = mockCard(Color.Clubs, Value.Jack);
         Stack mockStack = mock(Stack.class);
-
-        when(firstTopCard.getColor()).thenReturn(Color.Diamonds);
-        when(firstTopCard.getValue()).thenReturn(Value.Four);
-        when(topCardAfterUpdate.getColor()).thenReturn(Color.Clubs);
-        when(topCardAfterUpdate.getValue()).thenReturn(Value.Jack);
 
         try {
             when(mockStack.getTop()).thenReturn(firstTopCard);
@@ -63,5 +53,14 @@ public class VisualStackTest {
         }
 
         assertEquals(topCardAfterUpdate, sut.getTopCard().getCard());
+    }
+
+    private Card mockCard(Color color, Value value) {
+        Card card = mock(Card.class);
+
+        when(card.getColor()).thenReturn(color);
+        when(card.getValue()).thenReturn(value);
+
+        return card;
     }
 }
