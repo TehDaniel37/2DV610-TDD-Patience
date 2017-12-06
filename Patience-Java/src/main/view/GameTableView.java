@@ -1,9 +1,10 @@
 package main.view;
 
-import javafx.application.Application;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+import main.model.Deck;
+import main.model.Game;
+import main.model.GameTable;
 import main.model.Stack;
 
 import java.util.ArrayList;
@@ -13,12 +14,16 @@ import java.util.ArrayList;
  */
 public class GameTableView extends ScrollPane implements GameObserver {
 
+    private final int MAX_ROWS = 5;
+
     private ArrayList<VisualStack> visualStacks;
-    private GridPane stackGridPane;
+    private final GridPane stackGridPane;
+    private Game currentGame;
 
     public GameTableView() {
         visualStacks = new ArrayList<>();
         stackGridPane = new GridPane();
+        currentGame = new Game(new Deck(), new GameTable());
 
         this.setContent(stackGridPane);
     }
@@ -31,11 +36,16 @@ public class GameTableView extends ScrollPane implements GameObserver {
         return stackGridPane;
     }
 
+    public Game getCurrentGame() {
+        return currentGame;
+    }
+
     @Override
     public void onStackAdded(Stack stack) {
         try {
             VisualStack newStack = new VisualStack(stack);
             visualStacks.add(newStack);
+            updateGridPane();
         }
         catch (Exception e) {
 
@@ -47,4 +57,21 @@ public class GameTableView extends ScrollPane implements GameObserver {
     public void onStacksMerged(int positionOfMerged, int positionOfDeleted) {
 
     }
+
+    public void updateGridPane() {
+        stackGridPane.getChildren().clear();
+        int indexRow = 0;
+        int indexColumn = 0;
+
+        for (int i = 0; i < visualStacks.size() ; i++) {
+            VisualStack vs = visualStacks.get(i);
+            if (indexColumn == MAX_ROWS) {
+                indexColumn = 0;
+                indexRow++;
+            }
+            stackGridPane.add(vs, indexColumn, indexRow);
+        }
+    }
+
+
 }

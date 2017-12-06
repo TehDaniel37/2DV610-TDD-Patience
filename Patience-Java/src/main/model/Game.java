@@ -1,8 +1,8 @@
 package main.model;
 
 import main.exception.EmptyCardStackException;
+import main.exception.EmptyDeckException;
 
-import java.util.ArrayList;
 
 public class Game {
     private GameTable gameTable;
@@ -31,5 +31,23 @@ public class Game {
         }
 
         return card1.getColor() == card2.getColor() || card1.getValue() == card2.getValue();
+    }
+
+    public boolean dealNewCard() {
+        try {
+            Card card = deck.deal();
+            gameTable.addStack(card);
+            return true;
+        }
+        catch (EmptyDeckException ex) {
+            return true;
+        }
+    }
+
+    public void setUpGameStart() throws EmptyDeckException {
+        Card card = deck.deal();
+        gameTable.addStack(card);
+        card = deck.deal();
+        gameTable.addStack(card);
     }
 }

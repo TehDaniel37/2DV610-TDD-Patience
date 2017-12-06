@@ -1,6 +1,7 @@
 package test.model;
 
 import main.exception.EmptyCardStackException;
+import main.exception.EmptyDeckException;
 import main.model.*;
 
 import org.junit.AfterClass;
@@ -9,9 +10,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class GameTest {
     
@@ -71,6 +73,46 @@ public class GameTest {
         when(mockStackEmpty.getTop()).thenThrow(new EmptyCardStackException());
 
         assertFalse(sut.stacksMergeable(mockStackBottom, mockStackEmpty));
+    }
+
+    @Test
+    public void dealNewCardShouldCollectCardFromDeckAndCreateAStack() throws EmptyDeckException {
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
+        when(deck.deal()).thenReturn(mockCard);
+
+        sut.dealNewCard();
+
+        verify(table).addStack(mockCard);
+
+
+    }
+
+    @Test
+    public void dealNewCardShouldReturnTrueIfDealWasSuccessful() throws EmptyDeckException {
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
+        when(deck.deal()).thenReturn(mockCard);
+
+        assertTrue(sut.dealNewCard());
+
+    }
+
+    @Test
+    public void dealNewCardShouldReturnFalseIfDealWasNotSuccessful() throws EmptyDeckException {
+        ArrayList<Card> cards = new ArrayList<>();
+        deck.setCards(cards);
+
+        assertFalse(sut.dealNewCard());
+    }
+
+    @Test
+    public void setUpGameStartShouldAddTwoStacksToGameTable() throws EmptyDeckException {
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
+
+        when(deck.deal()).thenReturn(mockCard);
+        sut.setUpGameStart();
+
+        verify(table, times(2)).addStack(mockCard);
+
     }
     
     private Stack mockStack(Card top, Integer pos) {

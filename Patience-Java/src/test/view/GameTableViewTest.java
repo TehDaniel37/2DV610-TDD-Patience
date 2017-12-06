@@ -1,10 +1,11 @@
 package test.view;
 
 
-import javafx.scene.Scene;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import main.exception.EmptyCardStackException;
-import main.exception.EmptyDeckException;
 import main.model.Card;
 import main.model.Color;
 import main.model.Stack;
@@ -30,6 +31,10 @@ public class GameTableViewTest extends ApplicationTest {
         sut = new GameTableView();
     }
 
+    @Override
+    public void start(Stage stage) throws Exception {
+
+    }
 
     @Test
     public void constructorShouldCreateVisualStackArrayList() {
@@ -47,13 +52,13 @@ public class GameTableViewTest extends ApplicationTest {
     }
 
     @Test
-    public void onStackAddedShouldAddVisualStackToVisualStacks() throws EmptyCardStackException {
-        Stack stack = mock(Stack.class);
-        Card card = mock(Card.class);
-        when(card.getColor()).thenReturn(Color.Hearts);
-        when(card.getValue()).thenReturn(Value.Ace);
-        when(stack.getTop()).thenReturn(card);
+    public void constructorShouldCreateGame() {
+        assertNotNull(sut.getCurrentGame());
+    }
 
+    @Test
+    public void onStackAddedShouldAddVisualStackToVisualStacks() throws EmptyCardStackException {
+        Stack stack = initializeMockStack();
         sut.onStackAdded(stack);
 
         int expectedSize = 1;
@@ -61,9 +66,37 @@ public class GameTableViewTest extends ApplicationTest {
         assertEquals(expectedSize, sut.getVisualStacks().size());
     }
 
+    @Test
+    public void onStackAddedShouldUpdatePane() throws EmptyCardStackException {
+        Stack stack = initializeMockStack();
+        sut.onStackAdded(stack);
 
-    @Override
-    public void start(Stage stage) throws Exception {
+        assertNotNull(getNode(0,0, sut.getStackGridPane()));
 
+    }
+
+
+    private Stack initializeMockStack() throws EmptyCardStackException {
+        Stack stack = mock(Stack.class);
+        Card card = mock(Card.class);
+        when(card.getColor()).thenReturn(Color.Hearts);
+        when(card.getValue()).thenReturn(Value.Ace);
+        when(stack.getTop()).thenReturn(card);
+
+        return stack;
+    }
+
+    private Node getNode (int row, int column, GridPane gridPane) {
+        Node result = null;
+        ObservableList<Node> children = gridPane.getChildren();
+
+        for (Node node : children) {
+            if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+
+        return result;
     }
 }

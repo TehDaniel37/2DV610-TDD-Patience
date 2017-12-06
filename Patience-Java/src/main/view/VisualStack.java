@@ -1,12 +1,13 @@
 package main.view;
 
+import javafx.scene.control.Button;
 import main.exception.EmptyCardStackException;
 import main.model.Stack;
 
 /**
  * Created by Caroline Nilsson on 2017-11-27.
  */
-public class VisualStack {
+public class VisualStack extends Button{
 
     private VisualCard topCard;
     private Stack stack;
