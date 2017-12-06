@@ -1,6 +1,7 @@
 package main.view;
 
 import javafx.application.Application;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import main.model.Stack;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Caroline Nilsson on 2017-11-27.
  */
-public class GameTableView implements GameObserver {
+public class GameTableView extends ScrollPane implements GameObserver {
 
     private ArrayList<VisualStack> visualStacks;
     private GridPane stackGridPane;
@@ -18,6 +19,8 @@ public class GameTableView implements GameObserver {
     public GameTableView() {
         visualStacks = new ArrayList<>();
         stackGridPane = new GridPane();
+
+        this.setContent(stackGridPane);
     }
 
     public ArrayList<VisualStack> getVisualStacks() {
