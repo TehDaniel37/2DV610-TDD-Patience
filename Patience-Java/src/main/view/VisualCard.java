@@ -33,6 +33,10 @@ public class VisualCard {
     public Image getImage() {
         return image;
     }
+
+    public Card getCard() {
+        return null;
+    }
     
     /*
      * Inner static class that holds a sprite sheet of all card images.

@@ -17,4 +17,8 @@ public class VisualStack {
     public VisualCard getTopCard() {
         return topCard;
     }
+
+    public void update() {
+
+    }
 }
