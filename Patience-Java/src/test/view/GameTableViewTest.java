@@ -11,6 +11,7 @@ import main.model.Color;
 import main.model.Stack;
 import main.model.Value;
 import main.view.GameTableView;
+import main.view.VisualStack;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.After;
@@ -20,6 +21,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class GameTableViewTest extends ApplicationTest {
@@ -75,6 +77,14 @@ public class GameTableViewTest extends ApplicationTest {
 
     }
 
+    @Test
+    public void onStacksMergedShouldCallUpdateVisualStack() {
+        VisualStack visualStack = mock(VisualStack.class);
+        sut.onStacksMerged(0, 1);
+
+        verify(visualStack).update();
+
+    }
 
     private Stack initializeMockStack() throws EmptyCardStackException {
         Stack stack = mock(Stack.class);
