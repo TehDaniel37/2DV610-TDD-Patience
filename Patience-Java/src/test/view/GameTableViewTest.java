@@ -29,10 +29,12 @@ import static org.mockito.Mockito.when;
 public class GameTableViewTest extends ApplicationTest {
 
     private GameTableView sut;
+    private Stack stack;
 
     @Before
-    public void beforeEach() {
+    public void beforeEach() throws EmptyCardStackException{
         sut = new GameTableView();
+        stack = initializeMockStack();
     }
 
     @Override
@@ -61,18 +63,15 @@ public class GameTableViewTest extends ApplicationTest {
     }
 
     @Test
-    public void onStackAddedShouldAddVisualStackToVisualStacks() throws EmptyCardStackException {
-        Stack stack = initializeMockStack();
+    public void onStackAddedShouldAddVisualStackToVisualStacks() {
         sut.onStackAdded(stack);
 
         int expectedSize = 1;
-
         assertEquals(expectedSize, sut.getVisualStacks().size());
     }
 
     @Test
-    public void onStackAddedShouldUpdatePane() throws EmptyCardStackException {
-        Stack stack = initializeMockStack();
+    public void onStackAddedShouldUpdatePane() {
         sut.onStackAdded(stack);
 
         assertNotNull(getNode(0,0, sut.getStackGridPane()));
@@ -92,7 +91,7 @@ public class GameTableViewTest extends ApplicationTest {
     }
 
     private Stack initializeMockStack() throws EmptyCardStackException {
-        Stack stack = mock(Stack.class);
+        stack = mock(Stack.class);
         Card card = mock(Card.class);
         when(card.getColor()).thenReturn(Color.Hearts);
         when(card.getValue()).thenReturn(Value.Ace);
