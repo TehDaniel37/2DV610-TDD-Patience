@@ -21,7 +21,11 @@ public class VisualStack extends Button{
         return topCard;
     }
 
-    public void update() throws EmptyCardStackException {
-        topCard = new VisualCard(stack.getTop());
+    public void update() {
+        try {
+            topCard = new VisualCard(stack.getTop());
+        } catch(EmptyCardStackException ex) {
+            topCard = null;
+        }
     }
 }
