@@ -122,6 +122,15 @@ public class GameTest {
 
         assertTrue(sut.setUpGameStart());
     }
+
+    @Test
+    public void setUpGameStartShouldReturnFalseIfNotSuccessful() throws EmptyDeckException {
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
+
+        when(deck.deal()).thenThrow(new EmptyDeckException());
+
+        assertFalse(sut.setUpGameStart());
+    }
     
     private Stack mockStack(Card top, Integer pos) {
         Stack stack = mock(Stack.class);
