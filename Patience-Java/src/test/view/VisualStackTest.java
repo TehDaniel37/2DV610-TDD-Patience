@@ -6,17 +6,14 @@ import main.model.Color;
 import main.model.Stack;
 import main.model.Value;
 import main.view.VisualStack;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class VisualStackTest {
+public class VisualStackTest extends ApplicationTest {
 
     private VisualStack sut;
 
