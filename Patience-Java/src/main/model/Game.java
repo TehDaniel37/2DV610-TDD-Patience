@@ -44,10 +44,11 @@ public class Game {
         }
     }
 
-    public void setUpGameStart() throws EmptyDeckException {
+    public boolean setUpGameStart() throws EmptyDeckException {
         Card card = deck.deal();
         gameTable.addStack(card);
         card = deck.deal();
         gameTable.addStack(card);
+        return false;
     }
 }

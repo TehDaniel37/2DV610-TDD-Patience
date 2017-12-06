@@ -113,6 +113,15 @@ public class GameTest {
         verify(table, times(2)).addStack(mockCard);
 
     }
+
+    @Test
+    public void setUpGameStartShouldReturnTrueIfSuccessful() throws EmptyDeckException {
+        Card mockCard = mockCard(Color.Spades, Value.Ace);
+
+        when(deck.deal()).thenReturn(mockCard);
+
+        assertTrue(sut.setUpGameStart());
+    }
     
     private Stack mockStack(Card top, Integer pos) {
         Stack stack = mock(Stack.class);
