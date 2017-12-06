@@ -90,6 +90,18 @@ public class GameTableViewTest extends ApplicationTest {
 
     }
 
+    @Test
+    public void onStacksMergedShouldDeleteVisualStackRepresentingRemovedStack() {
+        VisualStack visualStack = mock(VisualStack.class);
+        ArrayList<VisualStack> stacks = sut.getVisualStacks();
+        stacks.add(visualStack);
+        stacks.add(visualStack);
+        sut.onStacksMerged(0, 1);
+        int expectedSize = 1;
+
+        assertEquals(expectedSize, sut.getVisualStacks().size());
+    }
+
     private Stack initializeMockStack() throws EmptyCardStackException {
         stack = mock(Stack.class);
         Card card = mock(Card.class);
